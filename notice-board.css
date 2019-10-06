@@ -1,7 +1,7 @@
 body {
     font-family: Roboto, Helvetica, Arial, -apple-system, "Segoe UI", sans-serif;
     font-size: 0.75em;
-    /*background: #f6f8f9;*/
+    background: #f6f8f9;
 }
 
 .container-fluid {
@@ -14,8 +14,9 @@ body {
 #notices .notice {
     margin: 0 0 25px 0;
     padding: 11px 18px 15px 18px;
-    border: 1px solid #eee;
+    border: 1px solid #e9e9eb;
     border-radius: 3px;
+    background: #fff;
 }
 #notices .notice .title {
     margin: 0 0 10px 0;
@@ -40,13 +41,18 @@ body {
     font-size: 0.9em;
     color: #495057;
 }
+
+/* Social */
 #notices .notice .social {
     margin: 9px 0 0 0;
     color: #666;
     font-size: 0.95em;
 }
 #notices .notice .social a {
-    color: #2aa3ee;
+    color: #2aa3f0;
+}
+#notices .notice .social i {
+    font-size: 1em;
 }
 #notices .notice .social .comments {
     margin: 0 10px 0 0;
@@ -55,6 +61,21 @@ body {
     margin: 0 2px 0 0;
 }
 
+/* Read more button */
+#notices .notice a.read-more {
+    margin: 10px 0 0 0;
+    padding: 6px 12px;
+    border: none;
+    font-size: 12px;
+    font-weight: 400;
+    color: #fff;
+    background: #2aa3f0;
+}
+#notices .notice a.read-more:focus, #notices .notice a.read-more:active  {
+    outline: none;
+    border: none;
+    box-shadow:none;
+}
 
 
 

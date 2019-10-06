@@ -21,7 +21,7 @@
         <!-- Roboto Font -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700&display=swap">
 
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="notice-board.css">
     
     </head>
 
@@ -53,56 +53,9 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
         <!-- Sample Data -->
-        <script src="sample-data.js"></script>
+        <script src="notice-board-sample-data.js"></script>
 
-        <script>
-
-            const log = function(data) {
-                console.log(data);
-            };
-
-            const noticesMarkup = notices.map(notice => {
-                return `
-                    <div class="col-md-6 col-lg-4">
-                        <div class="notice shadow">
-                            <div class="title">${notice.title}</div>
-                            <p class="summary">${notice.summary}</p>
-                            <div class="content">${notice.content}</div>
-                            <div class="author">Posted by: ${notice.author}</div>
-                            <div class="date">${notice.date}</div>
-                            <div class="social">
-                                <div class="row">
-                                    <div class="col">
-                                        <span class="comments"><a href="#"><i class="far fa-comment"></i></a>${notice.comments}</span>
-                                    </div>
-                                    <div class="likes col text-right">
-                                        <a href="#" data-action="like"><i class="far fa-thumbs-up"></i></a> ${notice.likes}
-                                        <a href="#" data-action="dislike"><i class="far fa-thumbs-down"></i></a> ${notice.dislikes}
-                                    </div>
-                                </div> <!-- /.row -->
-                            </div>  <!-- /.social -->
-                        </div>  <!-- /.notice -->
-                    </div>
-                `;
-            });
-            
-            $(function() {
-                
-                $('#notices > .row').html(noticesMarkup);
-
-                $('#notices .notice .social .likes a').click(function(event) {
-                    alert($(this).data('action') + ' action clicked');
-                    event.preventDefault();
-                });
-                
-                $('#notices .notice .comments a').click(function(event) {
-                    alert('Comments action clicked');
-                    event.preventDefault();
-                });
-
-            });
-
-        </script>
+        <script src="notice-board.js"></script>
             
     </body>
 
