@@ -1,0 +1,546 @@
+
+
+<!DOCTYPE html>
+ 
+<html lang="en">
+   
+    <head>
+       
+        <meta charset="utf-8">
+ 
+        <meta name="viewport" content="initial-scale=1">
+       
+        <title>Minimal HTML5 Template</title>
+ 
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		
+         <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.flip-card {
+  background-color: transparent;
+  perspective: 1000px;
+  
+}
+
+.flip-card-inner {
+
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back { 
+
+   backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color:red;
+  color: black;
+}
+
+.flip-card-back {
+  position:absolute;
+  top:0;
+  width:100%;
+  height:100%;
+  background-color: #2980b9;
+  color: white;
+  transform: rotateY(180deg);
+}
+ 
+</style>
+
+
+
+
+ 
+        <style media="screen">
+ 
+            .row {
+               
+            }
+ 
+            .col-sm-4 {
+                border: 1px dashed black;
+            }
+ 
+            #sidebar {
+                padding-left:0px;
+		padding-right:0px;
+                display: none;
+            }
+ 
+        </style>
+   
+    </head>
+ 
+    <body>
+       
+        <h1>Forum Template</h1>
+       
+        <p>Invokes the Bootstrap Version 4 card component.</p>
+ 
+        <div class="container-fluid">
+ 
+             <div class="row">
+ 
+                <div id="notices" class="col-sm-10">
+ 
+                    <div class="row">
+                       
+                        <div class="card text-white bg-info col-sm-3">
+                            <div class="card-body">
+                            <h5 class="card-title">Annual Cake Sale</h5>
+                            <p class="card-text"><small> Annual cake sale to be held in the parish council building on the first Monday of June at 12:30pm. Proceeds to go to the re-roofing of the Parish Church...</small></p>
+                           <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#MyNotice1"><small> Read More >>></small></button>
+                          </div>
+
+                          <div class="card-footer">
+                          <p class="card-text"> <small>Jane Smyth Parish Clerk 15/5/19</small></p>
+                          </div>
+                          
+                          <div class= "card-footer">
+                             <a href="#" class="btn btn-success"><small>Show All</small></a>
+                             <a href="#" class="btn btn-success"><small>Comments(5)</small></a>
+                          </div>  
+
+                        </div> <!--end of first notification -->
+                       
+                        
+						
+						
+						
+						
+
+                        <div class="card text-white bg-info col-sm-3">
+                            <div class="card-body">
+                            <h5 class="card-title">Parish Meeting</h5>
+                            <p class="card-text"><small>The next parish meeting will take place on June 21st at the earlier time of 7:30 in the local Stags Head Inn. The main topic for discussion will be the ...</small></p>
+                             <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#MyNotice2"><small> Read More >>></small></button>
+                          </div>
+
+                          <div class="card-footer">
+                          <p class="card-text"> <small>John Brady Chairman 17/5/19</small></p>
+                          </div>
+                          
+                          <div class= "card-footer">
+                             <a href="#" class="btn btn-success"><small>Show All</small></a>
+                             <a href="#" class="btn btn-success"><small>Comments(5)</small></a>
+                          </div>  
+
+                        
+                      </div> <!--end of second notification -->
+ 
+
+
+                       <div class="card text-white bg-info col-sm-3">
+                            <div class="card-body">
+                            <h5 class="card-title">Local Soccer Club</h5>
+                            <p class="card-text"><small> Shamrock Celtic will be having their local collection day on the 2nd Saturday of next month. All are asked to contribute generously as the team ...</small></p>
+                            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#MyNotice3"><small> Read More >>></small></button>
+                          </div>
+
+                          <div class="card-footer">
+                          <p class="card-text"> <small>Jane Smyth Parish Clerk 15/5/19</small></p>
+                          </div>
+                          
+                          <div class= "card-footer">
+                             <a href="#" class="btn btn-success"><small>Show All</small></a>
+                             <a href="#" class="btn btn-success"><small>Comments(5)</small></a>
+                          </div>  
+
+                        </div>  <!--end of third notification -->
+
+                        <div class="card text-white bg-info col-sm-3">
+                            <div class="card-body">
+                            <h5 class="card-title">Congratulations</h5>
+                           <p class="card-text"><small> Congratulations to the local ladies debating society who came first in their regional group on a great occasion on Wednesday last. Despite a large opposition from ...</small></p>
+                            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#MyNotice4"><small> Read More >>></small></button>
+                          </div>
+
+                          <div class="card-footer">
+                          <p class="card-text"> <small>Ita Snow Parishioner 18/5/19</small></p>
+                          </div>
+                          
+                          <div class= "card-footer">
+                             <a href="#" class="btn btn-success"><small>Show All</small></a>
+                             <a href="#" class="btn btn-success"><small>Comments(9)</small></a>
+                          </div>  
+
+                     </div> <!--end of fourth notification -->
+
+
+                     <div class="card text-white bg-info col-sm-3">
+                            <div class="card-body">
+                            <h5 class="card-title">Holiday To Paris</h5>
+                            <p class="card-text"><small> It has been agreed that this years holiday will be to Parish in mid August.The cost is 300 pounds and I am now collecting for it from any interested parties...</small></p>
+                            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#MyNotice5"><small> Read More >>></small></button>
+                          </div>
+
+                          <div class="card-footer">
+                          <p class="card-text"> <small>James White Travel Agent 15/5/19</small></p>
+                          </div>
+                          
+                          <div class= "card-footer">
+                             <a href="#" class="btn btn-success"><small>Show All</small></a>
+                             <a href="#" class="btn btn-success"><small>Comments(5)</small></a>
+                          </div>  
+
+                   </div> <!--end of fifth notification -->
+                        
+                    </div> <!--/.inner row-->
+ 
+                </div> <!-- /.#notices -->
+                <div id="sidebar" class="col-sm-2">
+                        <div class="card bg-primary" style="color:yellow;">
+                            <div class="card-body">
+                              <h5 class="card-title">Tom Penfold Painting Contractors</h5>
+                              <p class="card-text"> We have been in business for more than 10 years in your area. References available.</p>
+                             
+                              </div>
+
+                          <div class="card-footer">
+                            <p class="card-text"> <small>Phone No.: 086123456</small></p>
+                            <p class="card-text"><small>Email:tom.penfold@gmail.com</small></p>
+                          </div>							
+                          
+                          <div class= "card-footer text-center">
+                             <a href="#" class="btn btn-success"><small>Website</small></a>  
+                          </div>
+                      </div>						  
+                         
+						 
+		      
+
+
+
+<div class= "card flip-card">
+
+  <div class="flip-card-inner">
+  
+    <div class="card-body flip-card-front">
+         <img class="card-img-top" src="file:///c:/users/frank/desktop/paris.jpg" alt="Tom Penfold Image"> 
+         <h5 class="card-title">Tom Penfold Painting Contractors</h5>
+                              <p class="card-text"> We have been in business for more than 10 years in your area. References available.</p>      
+   </div>
+
+   
+
+ <div class= "card-body flip-card-back">
+       <a href="#" class="btn btn-success"><small>Website</small></a>
+     <p class="card-text" style="text-align:left;"> <small>Post Code: TA6 3AR</small></p>
+     <p class="card-text" style="text-align:left;margin-top:0px;margin-bottom:0px"><small>21 High Street</small></p>
+     <p class="card-text" style="text-align:left; margin-top:0px;margin-bottom:0px"> <small>Wedmore</small></p>
+     <p class="card-text" style="text-align:left;"><small>Sedgemoor</small></p>
+     <p class="card-text" style="text-align:left;margin-bottom:0px"> <small>Phone: 049 724465</small></p>
+     <p class="card-text" style="text-align:left"><small>Mobile: 085476543</small></p>
+     <p class="card-text" style="text-align:left"><small>Email:tom.penfold@gmail.com</small></p>
+ </div>    
+
+ 
+
+ </div> <!-- end of flip-card-inner -->
+
+
+</div>
+
+
+
+
+<div class= "card flip-card">
+
+  <div class="flip-card-inner">
+  
+    <div class="card-body flip-card-front" style="background-color:gray">
+         <img class="card-img-top" src="file:///C:/Users/Frank/Desktop/paris.jpg" alt="John Greene Image"> 
+         <h5 class="card-title">John Greene Plumber</h5>
+         <p class="card-text">No Job Too Small. Guaranteed Work.</p>      
+   </div>
+
+   
+
+ <div class= "card-body flip-card-back">
+       <a href="#" class="btn btn-success"><small>Website</small></a>
+     <p class="card-text" style="text-align:left;"> <small>Post Code: TA6 3AR</small></p>
+     <p class="card-text" style="text-align:left;margin-top:0px;margin-bottom:0px"><small>217 Cranbrook Green</small></p>
+     <p class="card-text" style="text-align:left; margin-top:0px;margin-bottom:0px"> <small>Tottenham</small></p>
+     <p class="card-text" style="text-align:left;"><small>London</small></p>
+     <p class="card-text" style="text-align:left;margin-bottom:0px"> <small>Phone: 045 444445</small></p>
+     <p class="card-text" style="text-align:left"><small>Mobile: 087343764</small></p>
+     <p class="card-text" style="text-align:left"><small>Email:john1greene@gmail.com</small></p>
+ </div>    
+
+ 
+
+ </div> <!-- end of flip-card-inner -->
+
+
+</div>
+
+
+
+
+
+
+                 
+
+                </div> <!-- /.#sidebar -->
+ 
+             </div> <!-- /. outer row -->
+       
+        </div> <!-- /.container -->
+		
+		
+
+
+<!-- Modal -->
+<div class="modal fade" id="MyNotice1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Annual Cake Sale</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Annual cake sale to be held in the parish council building on the first Monday of June at 12:30pm. Proceeds to go to the re-roofing of the Parish Church. It is expected that this project will cost in the order of 3 million pounds and take 2 years to complete.
+      </div>
+    </div>
+  </div>
+</div>
+		
+		
+<div class="modal fade" id="MyNotice2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Parish Meeting</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        The next parish meeting will take place on June 21st at the earlier time of 7:30 in the local Stags Head Inn. The main topic for discussion will be the impact that the proposed development of 100 houses will have on village life.
+      </div>
+    </div>
+  </div>
+</div>		
+	
+ 
+ <div class="modal fade" id="MyNotice3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Local Soccer Club</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       Shamrock Celtic will be having their local collection day on the 2nd Saturday of next month. All are asked to contribute generously as the team needs all the help it can get in acquiring a new football pitch.
+      </div>
+    </div>
+  </div>
+</div>	
+
+
+<div class="modal fade" id="MyNotice4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Congratulations</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Congratulations to the local ladies debating society who came first in their regional group on a great occasion on Wednesday last. Despite a large opposition from our near neighbouring parishes, the team did us proud in a hotly contested affair.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="MyNotice5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Holiday To Paris</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+         It has been agreed that this years holiday will be to Parish in mid August.The cost is 300 pounds and I am now collecting for it from any interested parties. It is a case of first come first served as the group booking is limited to a maximum of 20 individuals.
+      </div>
+    </div>
+  </div>
+</div>	
+        <script>
+           
+            $(function() {
+               
+                const showSidebar = true;
+ 
+                if (!showSidebar) {
+                    // Get the #notices CSS classes
+                    const noticesCssClasses = $('#notices').attr('class');
+                    console.log(noticesCssClasses) ;
+ 
+                    // Remove all #notices classes and set it's width 100%
+                    $('#notices').removeClass(noticesCssClasses).addClass('col-sm-12');
+ 
+                    // Hide the sidebar
+                    $('#sidebar').hide();
+                } else {
+                    $('#sidebar').show();
+                }
+ 
+ 
+                $('h1').click(function() {
+                    window.open('http://www.taxgrinds.ie/', '_blank');
+                });
+ 
+            });
+ 
+        </script>
+           
+    </body>
+<!-- 
+</html>
+RAW Paste Data
+<!DOCTYPE html>
+
+<html lang="en">
+	
+	<head>
+		
+		<meta charset="utf-8">
+
+		<meta name="viewport" content="initial-scale=1">
+		
+		<title>Minimal HTML5 Template</title>
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+		<style media="screen">
+
+			.row {
+				
+			}
+
+			.col-sm-4 {
+				border: 1px dashed black;
+			}
+
+			#sidebar {
+				background: teal;
+				display: none;
+			}
+
+		</style>
+	
+	</head>
+
+	<body>
+		
+		<h1>Lorem Ipsum</h1>
+		
+		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+
+		<div class="container-fluid">
+
+			 <div class="row">
+
+				<div id="notices" class="col-sm-10">
+
+					<div class="row">
+						
+						<div class="col-sm-4">
+							One of three columns
+						</div>
+						
+						<div class="col-sm-4">
+							One of three columns
+						</div>
+
+						<div class="col-sm-4">
+							One of three columns
+						</div>
+						
+						<div class="col-sm-4">
+							One of three columns
+						</div>
+
+						<div class="col-sm-4">
+							One of three columns
+						</div>
+						
+						<div class="col-sm-4">
+							One of three columns
+						</div>
+
+					</div>
+
+				</div>
+
+				<div id="sidebar" class="col-sm-2" style="padding-left:0px;">
+	
+					<p>Sidebar</p>
+
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, quod, error. Natus iusto fugit cumque veritatis aut ratione, consequatur enim distinctio voluptates facere ducimus neque, eos, pariatur fuga aperiam obcaecati.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, quod, error. Natus iusto fugit cumque veritatis aut ratione, consequatur enim distinctio voluptates facere ducimus neque, eos, pariatur fuga aperiam obcaecati.</p>
+
+				</div>
+
+			 </div> <!-- /.row -->
+		
+		</div> <!-- /.container -->
+
+		<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+		<script>
+			
+			$(function() {
+				
+				const showSidebar = true;
+
+				if (!showSidebar) {
+					// Get the #notices CSS classes
+					const noticesCssClasses = $('#notices').attr('class');
+					console.log(noticesCssClasses) ;
+
+					// Remove all #notices classes and set it's width 100%
+					$('#notices').removeClass(noticesCssClasses).addClass('col-sm-12');
+
+					// Hide the sidebar
+					$('#sidebar').hide();
+				} else {
+					$('#sidebar').show();
+				}
+
+
+				
+
+			});
+
+		</script>
+			
+	</body>
+
+</html>
+

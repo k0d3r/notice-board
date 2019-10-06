@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        
+        <meta charset="utf-8">
+
+        <meta name="viewport" content="initial-scale=1, shrink-to-fit=no">
+        
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        
+        <title>Notice Board</title>
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous">
+
+        <style>
+            
+            body {
+                font-size: 0.8em;
+            }
+
+            .container-fluid {
+                max-width: 1200px; 
+            }
+
+            #notices {
+                padding: 20px 18px 0 18px;
+            }
+            #notices .notice {
+                margin: 0 0 25px 0;
+                padding: 11px 18px 15px 18px;
+                border: 1px solid #eee;
+                border-radius: 3px;
+            }
+            #notices .notice .title {
+                margin: 0 0 10px 0;
+                font-size: 1.2em;
+                font-weight: bolder;
+            }
+            #notices .notice .summary {
+
+            }
+            #notices .notice .content {
+                
+            }
+            #notices .notice .content p:last-child {
+                margin: 0;
+            }
+            #notices .notice .author {
+                margin: 8px 0 0 0;
+                font-size: 0.95em;
+                color: #495057;
+            }
+            #notices .notice .date {
+                font-size: 0.9em;
+                color: #495057;
+            }
+            #notices .notice .social {
+                margin: 9px 0 0 0;
+                color: #666;
+                font-size: 0.95em;
+            }
+            #notices .notice .social .comments {
+                margin: 0 10px 0 0;
+            }
+            #notices .notice .social .comments i {
+                margin: 0 2px 0 0;
+            }
+            #notices .notice .social .likes a {
+                color: #4183d7;
+            }
+
+            
+
+            #ads {
+                background: #ccc;
+            }
+
+        </style>
+    
+    </head>
+
+    <body>
+
+        <div class="container-fluid">
+        
+            <div class="row">
+
+                <div id="notices" class="col-lg-9">
+                    
+                    <div class="row"></div>
+
+                </div> <!-- /#notices -->
+
+                <div id="ads" class="col-lg-3">
+                    Right Sidebar
+                </div> <!-- /#ads -->
+
+            </div> <!-- /.row -->
+
+        </div> <!-- /.container-fluid -->
+        
+        <!-- jQuery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        
+        <!-- Bootstrap & Dependencies -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+        <script>
+
+            const log = function(data) {
+                console.log(data);
+            };
+
+            const notices = [
+                {
+                    id: 1,
+                    title: 'Title One',
+                    summary: 'Notice One Summary',
+                    content: '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p>',
+                    date: 'Sept 4 2019, 08:08 PM',
+                    author: 'John James',
+                    comments: 3,
+                    likes: 6,
+                    dislikes: 1
+                },
+                {
+                    id: 2,
+                    title: 'Title Two',
+                    summary: 'Notice Two Summary',
+                    content: '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p>',
+                    date: 'Sept 9 2019, 10:17 AM',
+                    author: 'Jack Jules',
+                    comments: 0,
+                    likes: 1,
+                    dislikes: 2
+                },
+                {
+                    id: 3,
+                    title: 'Title Three With a Really Long Title',
+                    summary: 'Notice Three Summary',
+                    content: '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p>',
+                    date: 'Sept 16 2019, 07:03 PM',
+                    author: 'John Johnson',
+                    comments: 6,
+                    likes: 4,
+                    dislikes: 0
+                },
+                {
+                    id: 4,
+                    title: 'Title Four',
+                    summary: 'Notice Four Summary',
+                    content: '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p>',
+                    date: 'Sept 26 2019, 01:27 PM',
+                    author: 'Joe James',
+                    comments: 2,
+                    likes: 7,
+                    dislikes: 1
+                },
+                {
+                    id: 3,
+                    title: 'Title Five',
+                    summary: 'Notice Five Summary',
+                    content: '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p>',
+                    date: 'Sept 4 2019, 07:32 AM',
+                    author: 'James Jackson',
+                    comments: 7,
+                    likes: 3,
+                    dislikes: 2
+                }
+            ];
+
+            const noticesMarkup = notices.map(notice => {
+                return `
+                    <div class="col-md-6 col-lg-4">
+                        <div class="notice shadow">
+                            <div class="title">${notice.title}</div>
+                            <p class="summary">${notice.summary}</p>
+                            <div class="content">${notice.content}</div>
+                            <div class="author">Posted by: ${notice.author}</div>
+                            <div class="date">${notice.date}</div>
+                            <div class="social">
+                                <div class="row">
+                                    <div class="col">
+                                        <span class="comments"><i class="far fa-comment"></i>${notice.comments}</span>
+                                    </div>
+                                    <div class="likes col text-right">
+                                        <a href="#" data-action="like"><i class="far fa-thumbs-up"></i></a> ${notice.likes}
+                                        <a href="#" data-action="dislike"><i class="far fa-thumbs-down"></i></a> ${notice.dislikes}
+                                    </div>
+                                </div> <!-- /.row -->
+                            </div>  <!-- /.social -->
+                        </div>  <!-- /.notice -->
+                    </div>
+                `;
+            });
+            
+            $(function() {
+                
+                $('#notices > .row').html(noticesMarkup);
+
+                $('#notices .notice .social .likes a').click(function(event) {
+                    alert($(this).data('action') + ' action clicked');
+                    event.preventDefault();
+                });
+                
+            });
+
+        </script>
+            
+    </body>
+
+</html>
