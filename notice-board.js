@@ -25,7 +25,7 @@ const noticeMarkup = notices.map(notice => {
                 <div class="d-flex flex-row-reverse">
                     <a class="read-more btn btn-default" href="#" role="button">Read more</a>
                 </div>
-            </div>  <!-- /.notice -->
+            </div> <!-- /.notice -->
         </div>
     `;
 });
