@@ -12,15 +12,11 @@ const noticeMarkup = notices.map(notice => {
                 <div class="author">Posted by: ${notice.author}</div>
                 <div class="date">${notice.date}</div>
                 <div class="social">
-                    <div class="row">
-                        <div class="col">
-                            <span class="comments"><a href="#"><i class="far fa-comment"></i></a>${notice.comments}</span>
-                        </div>
-                        <div class="likes col text-right">
-                            <a href="#" data-action="like"><i class="far fa-thumbs-up"></i></a> ${notice.likes}
-                            <a href="#" data-action="dislike"><i class="far fa-thumbs-down"></i></a> ${notice.dislikes}
-                        </div>
-                    </div> <!-- /.row -->
+                    <span class="comments"><a href="#"><i class="far fa-comment"></i></a>${notice.comments}</span>   
+                    <span class="likes">
+                        <a href="#" data-action="like"><i class="far fa-thumbs-up"></i></a> ${notice.likes}
+                        <a href="#" data-action="dislike"><i class="far fa-thumbs-down"></i></a> ${notice.dislikes}
+                    </span>
                 </div> <!-- /.social -->
                 <div class="d-flex flex-row-reverse">
                     <a class="read-more btn btn-default" href="#" role="button">Read more</a>
@@ -53,5 +49,9 @@ $(function() {
     $('#notice-modal').on('hidden.bs.modal', function() {
         $('.modal-body', $(this)).empty();
     })
+
+    /* Show the modal automatically - DELETE */
+    $('#notice-modal .modal-body').html('<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p>');
+    $('#notice-modal').modal('show');
 
 });
