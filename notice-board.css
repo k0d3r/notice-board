@@ -61,24 +61,46 @@ body {
     margin: 0 2px 0 0;
 }
 
-/* Read more button */
-#notices .notice a.read-more {
+
+#ads {
+    background: #ccc;
+}
+
+
+.btn {
     margin: 10px 0 0 0;
     padding: 6px 12px;
     border: none;
     font-size: 12px;
     font-weight: 400;
+}
+.btn:focus, .btn:active  {
+    outline: none;
+    border: none;
+    box-shadow:none !important;
+}
+.btn-default {
     color: #fff;
     background: #2aa3f0;
 }
-#notices .notice a.read-more:focus, #notices .notice a.read-more:active  {
-    outline: none;
-    border: none;
-    box-shadow:none;
+.btn-default:hover {
+    color: #fff;
 }
 
+button:active, button:focus {
+    outline: none;
+}
 
-
-#ads {
-    background: #ccc;
+/* Modal */
+.modal .modal-header {
+    padding: 12px 18px 10px 18px;
+}
+.modal .modal-header h5.modal-title {
+    font-size: 1.5em;
+}
+.modal .modal-body p:last-child {
+    margin: 0;
+}
+.modal .modal-footer button {
+    margin: 0;
 }

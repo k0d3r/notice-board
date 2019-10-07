@@ -23,7 +23,7 @@ const noticesMarkup = notices.map(notice => {
                     </div> <!-- /.row -->
                 </div> <!-- /.social -->
                 <div class="d-flex flex-row-reverse">
-                    <a class="read-more btn" href="#" role="button">Read more</a>
+                    <a class="read-more btn btn-default" href="#" role="button">Read more</a>
                 </div>
             </div>  <!-- /.notice -->
         </div>
@@ -45,7 +45,8 @@ $(function() {
     });
 
      $('#notices .notice a.read-more').click(function(event) {
-        alert('Read more button clicked');
+        $('#notice-modal .modal-body').html( $(this).closest('.notice').find('.content').html() );
+        $('#notice-modal').modal('show')
         event.preventDefault();
     });
 
