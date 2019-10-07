@@ -2,7 +2,7 @@ const log = function(data) {
     console.log(data);
 };
 
-const noticesMarkup = notices.map(notice => {
+const noticeMarkup = notices.map(notice => {
     return `
         <div class="col-md-6 col-lg-4">
             <div class="notice shadow">
@@ -32,7 +32,7 @@ const noticesMarkup = notices.map(notice => {
 
 $(function() {
     
-    $('#notices > .row').html(noticesMarkup);
+    $('#notices > .row').html(noticeMarkup);
 
     $('#notices .notice .social .likes a').click(function(event) {
         alert($(this).data('action') + ' action clicked');
