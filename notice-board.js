@@ -44,10 +44,14 @@ $(function() {
         event.preventDefault();
     });
 
-     $('#notices .notice a.read-more').click(function(event) {
+    $('#notices .notice a.read-more').click(function(event) {
         $('#notice-modal .modal-body').html( $(this).closest('.notice').find('.content').html() );
         $('#notice-modal').modal('show')
         event.preventDefault();
     });
+
+    $('#notice-modal').on('hidden.bs.modal', function() {
+        $('.modal-body', $(this)).empty();
+    })
 
 });
