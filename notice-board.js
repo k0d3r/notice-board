@@ -5,7 +5,7 @@ const log = function(data) {
 const noticeMarkup = notices.map(notice => {
     return `
         <div class="col-md-6 col-lg-4">
-            <div class="notice shadow">
+            <div class="notice shadow" data-id="${notice.id}">
                 <div class="title">${notice.title}</div>
                 <p class="summary">${notice.summary}</p>
                 <div class="content">${notice.content}</div>
@@ -28,6 +28,8 @@ const noticeMarkup = notices.map(notice => {
 
 $(function() {
     
+    const noticeModal = $('#notice-modal');
+
     $('#notices > .row').html(noticeMarkup);
 
     $('#notices .notice .social .likes a').click(function(event) {
@@ -41,17 +43,27 @@ $(function() {
     });
 
     $('#notices .notice a.read-more').click(function(event) {
-        $('#notice-modal .modal-body').html( $(this).closest('.notice').find('.content').html() );
-        $('#notice-modal').modal('show')
+        const notice = notices.find(notice => notice.id == $(this).closest('.notice').data('id'));
+
+        const modalContentMarkup = `
+            <div class="author">Posted by: ${notice.author}</div>
+            <div class="content">${notice.content}</div>
+        `;
+
+        $('.modal-title', noticeModal).html(notice.title);
+        $('.modal-body', noticeModal).html(modalContentMarkup);
+        
+        noticeModal.modal('show');
+
         event.preventDefault();
     });
 
-    $('#notice-modal').on('hidden.bs.modal', function() {
+    noticeModal.on('hidden.bs.modal', function() {
         $('.modal-body', $(this)).empty();
     })
 
     /* Show the modal automatically - DELETE */
-    $('#notice-modal .modal-body').html('<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p>');
-    $('#notice-modal').modal('show');
+    //$('#notice-modal .modal-body').html('<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p>');
+    //$('#notice-modal').modal('show');
 
 });
