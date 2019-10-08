@@ -50,7 +50,7 @@ $(function() {
             <div class="content">${notice.content}</div>
         `;
 
-        $('.modal-title', noticeModal).html(notice.title);
+        $('.modal-title', noticeModal).text(notice.title);
         $('.modal-body', noticeModal).html(modalContentMarkup);
         
         noticeModal.modal('show');
