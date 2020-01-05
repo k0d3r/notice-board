@@ -1,4 +1,4 @@
-const log = function(data) {
+const log = data => {
     console.log(data);
 };
 
@@ -27,7 +27,7 @@ const noticeMarkup = notices.map(notice => {
 });
 
 $(function() {
-    
+
     const noticeModal = $('#notice-modal');
 
     $('#notices > .row').html(noticeMarkup);
