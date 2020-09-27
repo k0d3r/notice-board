@@ -2,6 +2,11 @@ const log = data => {
     console.log(data);
 };
 
+/*
+ This markup iterates and renders the notices array from sample-data.js
+ The actual data in the notices array should be returned from a DB query, using JS .map() here is just for demo purposes
+ The HTML structure and CSS classes should be used to render the HTML output
+ */
 const noticeMarkup = notices.map(notice => {
     return `
         <div class="col-md-6 col-lg-4">
@@ -30,15 +35,18 @@ $(function() {
 
     const noticeModal = $('#notice-modal');
 
+    // Add the notices markup to the page
     $('#notices > .row').html(noticeMarkup);
 
-    $('#notices .notice .social .likes a').click(function(event) {
-        alert($(this).data('action') + ' action clicked');
+    // Comment button
+    $('#notices .notice .comments a').click(function(event) {
+        alert('Comments action clicked');
         event.preventDefault();
     });
     
-    $('#notices .notice .comments a').click(function(event) {
-        alert('Comments action clicked');
+    // Like buttons
+    $('#notices .notice .social .likes a').click(function(event) {
+        alert($(this).data('action') + ' action clicked');
         event.preventDefault();
     });
 
