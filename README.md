@@ -4,4 +4,4 @@
 
 <a href="http://example.com/" target="_blank">example</a>
 
-[link]((https://www.google.com){:target="_blank"}
+[link](https://www.google.com){:target="_blank"}
