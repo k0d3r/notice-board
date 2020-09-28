@@ -4,8 +4,8 @@ const log = data => {
 
 /*
  This markup iterates and renders the notices array from sample-data.js
- The actual data in the notices array should be returned from a DB query, using JS .map() here is just for demo purposes
- The HTML structure and CSS classes should be used to render the HTML output
+ The actual data in the notices array should be returned from a DB query. JS .map() here is just for demo purposes
+ The HTML structure and CSS classes should be used to render the DB resultset looped foreach() HTML output
  */
 const noticeMarkup = notices.map(notice => {
     return `
@@ -44,7 +44,10 @@ $(function() {
         event.preventDefault();
     });
     
-    // Like buttons
+    /*
+     Like buttons - AJAX PUT request to API endpoint passing the data attr data-action param
+     If 200 (OK) reponse - no action. If not 200 response alert or trigger your notification system with request failed
+     */
     $('#notices .notice .social .likes a').click(function(event) {
         alert($(this).data('action') + ' action clicked');
         event.preventDefault();
@@ -66,6 +69,7 @@ $(function() {
         event.preventDefault();
     });
 
+    // Clear the modal on close
     noticeModal.on('hidden.bs.modal', function() {
         $('.modal-body', $(this)).empty();
     })
