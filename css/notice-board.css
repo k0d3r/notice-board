@@ -1,3 +1,7 @@
+:root {
+    --primary-color: #6574cd;
+}
+
 body {
     font-family: Roboto, Helvetica, Arial, -apple-system, "Segoe UI", sans-serif;
     font-size: 0.75em;
@@ -33,7 +37,7 @@ body {
     margin: 0;
 }
 #notices .notice .author {
-    margin: 8px 0 0 0;
+    margin: 8px 0 2px 0;
     font-size: 0.95em;
     color: #495057;
 }
@@ -49,16 +53,20 @@ body {
     font-size: 0.95em;
 }
 #notices .notice .social a {
-    color: #2aa3f0;
+    color: var(--primary-color);
 }
 #notices .notice .social i {
     font-size: 1em;
 }
 #notices .notice .social .comments {
-    margin: 0 12px 0 0;
+    margin: 0 20px 0 0;
 }
 #notices .notice .social .comments i {
-    margin: 0 2px 0 0;
+    margin: 0 3px 0 0;
+}
+
+#notices .notice .social .likes a {
+   margin: 0 0 0 3px;
 }
 
 
@@ -81,10 +89,11 @@ body {
 }
 .btn-default {
     color: #fff;
-    background: #2aa3f0;
+    background: var(--primary-color);
 }
 .btn-default:hover {
     color: #fff;
+    background: #434f94;
 }
 
 button:active, button:focus {
