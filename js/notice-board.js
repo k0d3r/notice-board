@@ -17,7 +17,7 @@ const noticeMarkup = notices.map(notice => {
                 <div class="author">Posted by: ${notice.author}</div>
                 <div class="date">${notice.date}</div>
                 <div class="social">
-                    <span class="comments"><a href="#"><i class="far fa-comment"></i></a>${notice.comments}</span>   
+                    <span class="comments"><a href="#"><i class="far fa-comment"></i></a>${notice.comments.length}</span>
                     <span class="likes">
                         <a href="#" data-action="like"><i class="far fa-thumbs-up"></i></a> ${notice.likes}
                         <a href="#" data-action="dislike"><i class="far fa-thumbs-down"></i></a> ${notice.dislikes}
@@ -30,6 +30,21 @@ const noticeMarkup = notices.map(notice => {
         </div>
     `;
 });
+
+const ajaxRequest = (url, data, type) => {
+    $.ajax({
+        type: 'PUT',
+        url: url,
+        contentType: 'application/json',
+        data: JSON.stringify(data),
+    }).done(function () {
+        console.log('SUCCESS');
+    }).fail(function (msg) {
+        console.log('FAIL');
+    }).always(function (msg) {
+        console.log('ALWAYS');
+    });
+};
 
 $(function() {
 
@@ -46,7 +61,8 @@ $(function() {
     
     /*
      Like buttons - AJAX PUT request to API endpoint passing the data attr data-action param
-     If 200 (OK) reponse - no action. If not 200 response alert or trigger your notification system with request failed
+     The insert should be +1 || -1
+     If 200 (OK) reponse - no action. If not a 200 response: an alert or trigger your notification system with request failed (400/500)
      */
     $('#notices .notice .social .likes a').click(function(event) {
         alert($(this).data('action') + ' action clicked');
@@ -72,10 +88,6 @@ $(function() {
     // Clear the modal on close
     noticeModal.on('hidden.bs.modal', function() {
         $('.modal-body', $(this)).empty();
-    })
-
-    /* Show the modal automatically - DELETE */
-    //$('#notice-modal .modal-body').html('<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p>');
-    //$('#notice-modal').modal('show');
+    });
 
 });

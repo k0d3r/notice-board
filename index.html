@@ -31,11 +31,39 @@
         
             <div class="row">
 
-                <div id="notices" class="col-lg-9">
+                <div class="col-lg-9">
                     
-                    <div class="row"></div>
+                    <header>
+                        <div class="row justify-content-end">
+                            <div class="col-md-3">
+                                <a id="add-notice" class="btn btn-default float-right" href="#" role="button"><i class="fas fa-plus-circle"></i> Add Notice</a>
+                            </div>
+                        </div>
+                    </header>
+                    
+                    <div id="notices">
+                        <div class="row"></div>
+                    </div>
 
-                </div> <!-- /#notices -->
+                    <nav id="pagination">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                </div> <!-- /.col-lg-9 -->
 
                 <div id="ads" class="col-lg-3">
                     Right Sidebar
