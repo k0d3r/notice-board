@@ -9,14 +9,23 @@ body {
 }
 
 .container-fluid {
-    max-width: 1200px; 
+    max-width: 1200px;
 }
 
 header {
     padding: 20px 0 0 0;
 }
+header a#add-notice {
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    background: none;
+}
+header a#add-notice:hover {
+    color: #434f94;
+    border-color: #434f94;
+}
 header a#add-notice i {
-    margin: 0 2px 0 0;
+    margin: 0 1px 0 0;
 }
 
 #notices {
@@ -113,17 +122,16 @@ button:active, button:focus {
 }
 
 /* Modal */
-#notice-modal {
-    padding: 0 !important;
+.modal {
     top: 0;
-    padding: 20px !important;
+    padding: 20px;
 }
-#notice-modal .modal-dialog {
+.modal-dialog {
     width: 100%;
     max-width: 1000px;
     margin: 0 auto;
 }
-#notice-modal .modal-content {
+.modal-content {
     width: 100%;
     margin: 0 auto;
     border-radius: 3px;
@@ -139,6 +147,13 @@ button:active, button:focus {
 }
 .modal .modal-footer button {
     margin: 0;
+}
+
+#notice-modal .modal-body {
+    
+}
+#new-notice-modal .modal-dialog {
+    max-width: 600px;
 }
 
 /* Pagination */

@@ -47,9 +47,6 @@ const ajaxRequest = (url, data, type) => {
 };
 
 $(function() {
-
-    const noticeModal = $('#notice-modal');
-
     // Add the notices markup to the page
     $('#notices > .row').html(noticeMarkup);
 
@@ -72,6 +69,10 @@ $(function() {
     $('#notices .notice a.read-more').click(function(event) {
         const notice = notices.find(notice => notice.id == $(this).closest('.notice').data('id'));
 
+        $('.modal').attr('id', 'notice-modal');
+
+        const noticeModal = $('#notice-modal');
+
         const modalContentMarkup = `
             <div class="author">Posted by: ${notice.author}</div>
             <div class="content">${notice.content}</div>
@@ -85,9 +86,23 @@ $(function() {
         event.preventDefault();
     });
 
-    // Clear the modal on close
-    noticeModal.on('hidden.bs.modal', function() {
-        $('.modal-body', $(this)).empty();
+    // Clear the modal contents and remove it's ID attr on close
+    $('.modal').on('hidden.bs.modal', function() {
+        $('.modal-title, .modal-body', $(this)).empty();
+        $(this).removeAttr('id');
+    });
+
+    $('#add-notice').click(function(event) {
+        $('.modal').attr('id', 'new-notice-modal');
+        
+        const newNoticeModal = $('#new-notice-modal');
+        
+        $('.modal-title', newNoticeModal).text('New Notice');
+        $('.modal-body', newNoticeModal).html('Hello World, I will be a form for a new modal');
+        
+        newNoticeModal.modal('show');
+
+        event.preventDefault();
     });
 
 });
