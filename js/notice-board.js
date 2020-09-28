@@ -2,6 +2,17 @@ const log = data => {
     console.log(data);
 };
 
+const truncateString = (string, length) => {
+    // Strip HTML tags - https://ourcodeworld.com/articles/read/376/how-to-strip-html-from-a-string-extract-only-text-content-in-javascript
+    string = string.replace(/<[^>]+>/g, '');
+
+    if (string.length < length) {
+        return string;
+    }
+
+    return string.substring(0, length) + '...';
+};
+
 /*
  This markup iterates and renders the notices array from sample-data.js
  The actual data in the notices array should be returned from a DB query. JS .map() here is just for demo purposes
@@ -12,20 +23,23 @@ const noticeMarkup = notices.map(notice => {
         <div class="col-md-6 col-lg-4">
             <div class="notice shadow" data-id="${notice.id}">
                 <div class="title">${notice.title}</div>
-                <p class="summary">${notice.summary}</p>
-                <div class="content">${notice.content}</div>
-                <div class="author">Posted by: ${notice.author}</div>
+                <div class="content">${truncateString(notice.content, 120)}</div>
+                <div class="author">${notice.author}</div>
                 <div class="date">${notice.date}</div>
-                <div class="social">
-                    <span class="comments"><a href="#"><i class="far fa-comment"></i></a>${notice.comments.length}</span>
-                    <span class="likes">
-                        <a href="#" data-action="like"><i class="far fa-thumbs-up"></i></a> ${notice.likes}
-                        <a href="#" data-action="dislike"><i class="far fa-thumbs-down"></i></a> ${notice.dislikes}
-                    </span>
-                </div> <!-- /.social -->
-                <div class="d-flex flex-row-reverse">
-                    <a class="read-more btn btn-default" href="#" role="button">Read more</a>
-                </div>
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="social">
+                            <span class="comments"><a href="#"><i class="far fa-comment"></i></a>${notice.comments.length}</span>
+                            <span class="likes">
+                                <a href="#" data-action="like"><i class="far fa-thumbs-up"></i></a> ${notice.likes}
+                                <a href="#" data-action="dislike"><i class="far fa-thumbs-down"></i></a> ${notice.dislikes}
+                            </span>
+                        </div> <!-- /.social -->
+                    </div>
+                    <div class="col-sm-4 d-flex flex-row-reverse">
+                        <a class="view btn btn-default" href="#" role="button">View</a>
+                    </div>
+                </div> <!-- /.row -->
             </div> <!-- /.notice -->
         </div>
     `;
@@ -66,7 +80,7 @@ $(function() {
         event.preventDefault();
     });
 
-    $('#notices .notice a.read-more').click(function(event) {
+    $('#notices .notice a.view').click(function(event) {
         const notice = notices.find(notice => notice.id == $(this).closest('.notice').data('id'));
 
         $('.modal').attr('id', 'notice-modal');

@@ -1,5 +1,6 @@
 :root {
     --primary-color: #6574cd;
+    --primary-color-darker: #434f94;
 }
 
 body {
@@ -21,12 +22,25 @@ header a#add-notice {
     background: none;
 }
 header a#add-notice:hover {
-    color: #434f94;
-    border-color: #434f94;
+    color: var(--primary-color-darker);
+    border-color: var(--primary-color-darker);
 }
 header a#add-notice i {
     margin: 0 1px 0 0;
 }
+
+
+/* Trying equal height cols */
+#notices > .row {
+    /* display: flex; */
+    /* flex-direction: row; */
+}
+#notices > .row .col {
+    /* flex: 1; */
+    /* flex-direction: column; */
+}
+/* End Trying equal height cols */
+
 
 #notices {
     padding: 20px 0 0 0;
@@ -43,23 +57,19 @@ header a#add-notice i {
     font-size: 1.2em;
     font-weight: 500;
 }
-#notices .notice .summary {
-
-}
 #notices .notice .content {
-    
+    height: 80px; /* ToDo: Remove these 2 rules, and look for Bootstrap4 way of doing it or dynamic with JS */
+    overflow: hidden;
 }
 #notices .notice .content p:last-child {
     margin: 0;
 }
-#notices .notice .author {
-    margin: 8px 0 2px 0;
+#notices .notice .author, #notices .notice .date {
     font-size: 0.85em;
     color: #495057;
 }
-#notices .notice .date {
-    font-size: 0.85em;
-    color: #495057;
+#notices .notice .author {
+    margin: 6px 0 2px 0;
 }
 
 /* Social */
@@ -86,7 +96,7 @@ header a#add-notice i {
 }
 
 #notices .notice .btn {
-    margin: 10px 0 0 0;
+   
 }
 
 
@@ -114,7 +124,7 @@ header a#add-notice i {
 }
 .btn-default:hover {
     color: #fff;
-    background: #434f94;
+    background: var(--primary-color-darker);
 }
 
 button:active, button:focus {

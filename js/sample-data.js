@@ -2,8 +2,7 @@ const notices = [
     {
         id: 1,
         title: 'Title One',
-        summary: 'Notice One Summary',
-        content: '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p>',
+        content: '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros.</p>',
         date: 'Sept 4 2020, 08:08 PM',
         author: 'John James',
         likes: 6,
@@ -17,8 +16,7 @@ const notices = [
     {
         id: 2,
         title: 'Title Two',
-        summary: 'Notice Two Summary',
-        content: '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p>',
+        content: '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio.</p>',
         date: 'Sept 9 2020, 10:17 AM',
         author: 'Jack Jules',
         likes: 1,
@@ -28,7 +26,6 @@ const notices = [
     {
         id: 3,
         title: 'Title Three With a Really Long Title',
-        summary: 'Notice Three Summary',
         content: '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p>',
         date: 'Sept 16 2020, 07:03 PM',
         author: 'John Johnson',
@@ -58,7 +55,6 @@ const notices = [
     {
         id: 4,
         title: 'Title Four',
-        summary: 'Notice Four Summary',
         content: '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p>',
         date: 'Sept 26 2020, 01:27 PM',
         author: 'Joe James',
@@ -76,7 +72,6 @@ const notices = [
     {
         id: 5,
         title: 'Title Five',
-        summary: 'Notice Five Summary',
         content: '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p>',
         date: 'Sept 4 2020, 07:32 AM',
         author: 'James Jackson',
