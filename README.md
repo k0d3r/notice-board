@@ -7,3 +7,9 @@
 [link](https://www.google.com){target="_blank"}
 
 Hi
+
+[go](http://stackoverflow.com){:target="_blank"}
+
+[go](http://stackoverflow.com){:target="_blank"}
+
+[go](http://stackoverflow.com){:target="_blank" rel="noopener"}
