@@ -134,7 +134,7 @@ $(function() {
     });
 
     // Prevent the submit event on the new notice form
-    $(document).on('submit', '#new-notice-form', function (event) {
+    $(document).on('submit', '#new-notice-form', function(event) {
         alert($(this).attr('id') + ' form submitted');
         event.preventDefault();
     });

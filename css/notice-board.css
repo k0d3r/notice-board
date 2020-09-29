@@ -124,8 +124,8 @@ header a#add-notice i {
 .modal .modal-header {
     padding: 12px 18px 10px 18px;
 }
-.modal .modal-header h5.modal-title {
-    font-size: 1.5em;
+.modal .modal-header h3.modal-title {
+    font-size: 1.4em;
 }
 .modal .modal-body p:last-child {
     margin: 0;
