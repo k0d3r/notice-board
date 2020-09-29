@@ -110,12 +110,23 @@ $(function() {
         $('.modal').attr('id', 'new-notice-modal');
         
         const newNoticeModal = $('#new-notice-modal');
+
+        // Prevent closing of modal on background click
+        newNoticeModal.modal({
+            backdrop: 'static',
+            keyboard: false
+        });
         
         $('.modal-title', newNoticeModal).text('New Notice');
-        $('.modal-body', newNoticeModal).html('Hello World, I will be a form for a new modal');
+        $('.modal-body', newNoticeModal).html( $('#new-notice-form-template').html() );
         
         newNoticeModal.modal('show');
 
+        event.preventDefault();
+    });
+
+    $(document).on('submit', '#new-notice-form', function (event) {
+        alert($(this).attr('id') + ' form submitted');
         event.preventDefault();
     });
 

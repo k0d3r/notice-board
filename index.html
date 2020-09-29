@@ -97,6 +97,29 @@
             </div> <!-- /.modal-dialog -->
         
         </div> <!-- /.modal -->
+
+        <template id="new-notice-form-template">
+            <form id="new-notice-form" action="" method="POST">
+
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" id="title" class="form-control" placeholder="Notice Title">
+                </div>
+
+                <div class="form-group">
+                    <label for="content">Content</label>
+                    <textarea name="content" id="content" class="form-control" rows="6" placeholder="Notice Content"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="image">Image Upload</label>
+                    <input type="file" name="image" id="image" class="form-control-file">
+                </div>
+
+                <button type="submit" class="btn btn-success">Add Notice</button>
+
+            </form>
+        </template>
         
         <!-- jQuery -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>

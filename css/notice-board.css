@@ -9,6 +9,10 @@ body {
     background: #ececec;
 }
 
+template {
+    display: none;
+}
+
 .container-fluid {
     max-width: 1200px;
 }
@@ -113,7 +117,7 @@ header a#add-notice i {
     font-size: 12px;
     font-weight: 400;
 }
-.btn:focus, .btn:active  {
+.btn:active, .btn:focus, button:active, button:focus  {
     outline: none;
     border: none;
     box-shadow: none !important;
@@ -125,10 +129,6 @@ header a#add-notice i {
 .btn-default:hover {
     color: #fff;
     background: var(--primary-color-darker);
-}
-
-button:active, button:focus {
-    outline: none;
 }
 
 /* Modal */
@@ -177,4 +177,19 @@ button:active, button:focus {
     color: #fff;
     border-color: #dee2e6;
     background: var(--primary-color);
+}
+
+.form-control {
+    font-size: inherit;
+}
+.form-control:focus {
+    box-shadow: none;
+    border-color: #999;
+}
+form label {
+    margin: 0 0 3px 0;
+}
+form input[type="text"], form textarea {
+    padding: 4px 10px;
+    border-radius: 2px;
 }
