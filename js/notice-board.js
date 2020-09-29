@@ -2,10 +2,13 @@ const log = data => {
     console.log(data);
 };
 
+/*
+ Strip HTML tags
+ https://ourcodeworld.com/articles/read/376/how-to-strip-html-from-a-string-extract-only-text-content-in-javascript
+ */
 const stripHtmlTags = string => string.replace(/<[^>]+>/g, '');
 
 const truncateString = (string, length) => {
-    // Strip HTML tags - https://ourcodeworld.com/articles/read/376/how-to-strip-html-from-a-string-extract-only-text-content-in-javascript
     string = stripHtmlTags(string);
 
     if (string.length < length) {
@@ -13,6 +16,21 @@ const truncateString = (string, length) => {
     }
 
     return string.substring(0, length) + '...';
+};
+
+const ajaxRequest = (url, data, type) => {
+    $.ajax({
+        type: 'PUT',
+        url: url,
+        contentType: 'application/json',
+        data: JSON.stringify(data),
+    }).done(function () {
+        console.log('SUCCESS');
+    }).fail(function (msg) {
+        console.log('FAIL');
+    }).always(function (msg) {
+        console.log('ALWAYS');
+    });
 };
 
 /*
@@ -47,21 +65,6 @@ const noticeMarkup = notices.map(notice => {
     `;
 });
 
-const ajaxRequest = (url, data, type) => {
-    $.ajax({
-        type: 'PUT',
-        url: url,
-        contentType: 'application/json',
-        data: JSON.stringify(data),
-    }).done(function () {
-        console.log('SUCCESS');
-    }).fail(function (msg) {
-        console.log('FAIL');
-    }).always(function (msg) {
-        console.log('ALWAYS');
-    });
-};
-
 $(function() {
     // Add the notices markup to the page
     $('#notices > .row').html(noticeMarkup);
@@ -82,6 +85,7 @@ $(function() {
         event.preventDefault();
     });
 
+    // View a notice in a modal
     $('#notices .notice a.view').click(function(event) {
         const notice = notices.find(notice => notice.id == $(this).closest('.notice').data('id'));
 
@@ -89,6 +93,7 @@ $(function() {
 
         const noticeModal = $('#notice-modal');
 
+        // ToDo: Could this be in a template tag? How to pass in JS template strings?
         const modalContentMarkup = `
             <div class="author">Posted by: ${notice.author}</div>
             <div class="content">${notice.content}</div>
@@ -102,18 +107,13 @@ $(function() {
         event.preventDefault();
     });
 
-    // Clear the modal contents and remove it's ID attr on close
-    $('.modal').on('hidden.bs.modal', function() {
-        $('.modal-title, .modal-body', $(this)).empty();
-        $(this).removeAttr('id');
-    });
-
+    // Show the form for adding a new notice in a modal
     $('#add-notice').click(function(event) {
         $('.modal').attr('id', 'new-notice-modal');
         
         const newNoticeModal = $('#new-notice-modal');
 
-        // Prevent closing of modal on background click
+        // Prevent closing of the new notice modal on a background click
         newNoticeModal.modal({
             backdrop: 'static',
             keyboard: false
@@ -127,6 +127,13 @@ $(function() {
         event.preventDefault();
     });
 
+    // Clear the modal contents and remove it's ID attr on close
+    $('.modal').on('hidden.bs.modal', function() {
+        $('.modal-title, .modal-body', $(this)).empty();
+        $(this).removeAttr('id');
+    });
+
+    // Prevent the submit event on the new notice form
     $(document).on('submit', '#new-notice-form', function (event) {
         alert($(this).attr('id') + ' form submitted');
         event.preventDefault();
