@@ -17,6 +17,9 @@ template {
     max-width: 1200px;
 }
 
+/*--------------------------------------------------
+    Header
+--------------------------------------------------*/
 header {
     padding: 20px 0 0 0;
 }
@@ -33,6 +36,9 @@ header a#add-notice i {
     margin: 0 1px 0 0;
 }
 
+/*--------------------------------------------------
+    Notices
+--------------------------------------------------*/
 
 /* Trying equal height cols */
 #notices > .row {
@@ -94,44 +100,13 @@ header a#add-notice i {
 #notices .notice .social .comments i {
     margin: 0 3px 0 0;
 }
-
 #notices .notice .social .likes a {
    margin: 0 0 0 3px;
 }
 
-#notices .notice .btn {
-   
-}
-
-
-#ads {
-    background: #ccc;
-}
-
-
-.btn {
-    margin: 0;
-    padding: 6px 12px;
-    border: none;
-    border-radius: 2px;
-    font-size: 12px;
-    font-weight: 400;
-}
-.btn:active, .btn:focus, button:active, button:focus  {
-    outline: none;
-    border: none;
-    box-shadow: none !important;
-}
-.btn-default {
-    color: #fff;
-    background: var(--primary-color);
-}
-.btn-default:hover {
-    color: #fff;
-    background: var(--primary-color-darker);
-}
-
-/* Modal */
+/*--------------------------------------------------
+    Modals
+--------------------------------------------------*/
 .modal {
     top: 0;
     padding: 20px;
@@ -159,14 +134,17 @@ header a#add-notice i {
     margin: 0;
 }
 
-#notice-modal .modal-body {
-    
-}
+/* New Notice Modal */
 #new-notice-modal .modal-dialog {
     max-width: 600px;
 }
+#new-notice-modal .modal-footer {
+    display: none;
+}
 
-/* Pagination */
+/*--------------------------------------------------
+    Pagination
+--------------------------------------------------*/
 .pagination a {
     color: var(--primary-color);
 }
@@ -177,6 +155,31 @@ header a#add-notice i {
     color: #fff;
     border-color: #dee2e6;
     background: var(--primary-color);
+}
+
+/*--------------------------------------------------
+    Form Elements
+--------------------------------------------------*/
+.btn {
+    margin: 0;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 2px;
+    font-size: 12px;
+    font-weight: 400;
+}
+.btn:active, .btn:focus, button:active, button:focus  {
+    outline: none;
+    border: none;
+    box-shadow: none !important;
+}
+.btn-default {
+    color: #fff;
+    background: var(--primary-color);
+}
+.btn-default:hover {
+    color: #fff;
+    background: var(--primary-color-darker);
 }
 
 .form-control {
@@ -192,4 +195,16 @@ form label {
 form input[type="text"], form textarea {
     padding: 4px 10px;
     border-radius: 2px;
+}
+
+/* New Notice Form */
+#new-notice-form {
+    padding: 0 0 5px 0;
+}
+
+/*--------------------------------------------------
+    Ads
+--------------------------------------------------*/
+#ads {
+    background: #ccc;
 }

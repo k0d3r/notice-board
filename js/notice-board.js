@@ -2,9 +2,11 @@ const log = data => {
     console.log(data);
 };
 
+const stripHtmlTags = string => string.replace(/<[^>]+>/g, '');
+
 const truncateString = (string, length) => {
     // Strip HTML tags - https://ourcodeworld.com/articles/read/376/how-to-strip-html-from-a-string-extract-only-text-content-in-javascript
-    string = string.replace(/<[^>]+>/g, '');
+    string = stripHtmlTags(string);
 
     if (string.length < length) {
         return string;
