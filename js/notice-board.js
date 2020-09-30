@@ -42,7 +42,7 @@ const noticeMarkup = notices.map(notice => {
     return `
         <div class="col-md-6 col-lg-4">
             <div class="notice shadow" data-id="${notice.id}">
-                <div class="title">${notice.title}</div>
+                <div class="title">${stripHtmlTags(notice.title)}</div>
                 <div class="content">${truncateString(notice.content, 120)}</div>
                 <div class="author">${notice.author}</div>
                 <div class="date">${notice.date}</div>
@@ -89,7 +89,7 @@ $(function() {
     $('#notices .notice a.view').click(function(event) {
         const notice = notices.find(notice => notice.id == $(this).closest('.notice').data('id'));
 
-        $('.modal').attr('id', 'notice-modal');
+        $('.content-modal').attr('id', 'notice-modal');
 
         const noticeModal = $('#notice-modal');
 
@@ -102,39 +102,58 @@ $(function() {
         $('.modal-title', noticeModal).text(notice.title);
         $('.modal-body', noticeModal).html(modalContentMarkup);
         
-        noticeModal.modal('show');
+        // Allow closing of the modal on a background click
+        noticeModal.modal({ backdrop: true, keyboard: true });
 
         event.preventDefault();
     });
 
     // Show the form for adding a new notice in a modal
     $('#add-notice').click(function(event) {
-        $('.modal').attr('id', 'new-notice-modal');
+        $('.content-modal').attr('id', 'add-notice-modal');
         
-        const newNoticeModal = $('#new-notice-modal');
+        const addNoticeModal = $('#add-notice-modal');
+        
+        $('.modal-title', addNoticeModal).text('Add Notice');
+        $('.modal-body', addNoticeModal).html( $('#add-notice-form-template').html() );
 
-        // Prevent closing of the new notice modal on a background click
-        newNoticeModal.modal({
-            backdrop: 'static',
-            keyboard: false
-        });
-        
-        $('.modal-title', newNoticeModal).text('New Notice');
-        $('.modal-body', newNoticeModal).html( $('#new-notice-form-template').html() );
-        
-        newNoticeModal.modal('show');
+        // Prevent closing of the modal on a background click
+        addNoticeModal.modal({ backdrop: 'static', keyboard: false });
 
         event.preventDefault();
     });
 
-    // Clear the modal contents and remove it's ID attr on close
-    $('.modal').on('hidden.bs.modal', function() {
+    // Close the parent modal from inside the modal
+    $(document).on('click', '.close-parent-modal', function() {
+        const modal = $(this).closest('.modal');
+        modal.modal('hide');
+    });
+
+    // Close all modals with a class of .modal
+    $(document).on('click', '.close-modals', function() {
+        $('.modal').modal('hide');
+    });
+
+    // Clear the content modal and reset it on hide
+    $('.content-modal').on('hidden.bs.modal', function() {
         $('.modal-title, .modal-body', $(this)).empty();
         $(this).removeAttr('id');
+        $(this).removeData('bs.modal'); // Remove the bs.modal data variable to reinitialize the modal
+        log('.content-modal closed'); //ToDo: Remove this
+    });
+
+    // Show an confirm/cancel dialog box on cancel
+    $(document).on('click', '#add-notice-form .btn-cancel', function() {
+        const confirmCancelModal = $('#confirm-cancel-modal');
+        
+        $('.modal-body > h3', confirmCancelModal).text('Your notice will not be added');
+
+        // Prevent closing of the modal on a background click
+        confirmCancelModal.modal({ backdrop: 'static', keyboard: false });
     });
 
     // Prevent the submit event on the new notice form
-    $(document).on('submit', '#new-notice-form', function(event) {
+    $(document).on('submit', '#add-notice-form', function(event) {
         alert($(this).attr('id') + ' form submitted');
         event.preventDefault();
     });

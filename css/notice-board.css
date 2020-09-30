@@ -134,12 +134,36 @@ header a#add-notice i {
     margin: 0;
 }
 
-/* New Notice Modal */
-#new-notice-modal .modal-dialog {
+/* Notice Modal */
+#notice-modal {
+   
+}
+
+/* Add Notice Modal */
+#add-notice-modal {
+    
+}
+#add-notice-modal .modal-dialog {
     max-width: 600px;
 }
-#new-notice-modal .modal-footer {
+#add-notice-modal .modal-footer {
     display: none;
+}
+
+/* Confirm/Cancel Notice Modal */
+#confirm-cancel-modal {
+    background: rgba(60, 60, 60, 0.5);
+}
+#confirm-cancel-modal .modal-dialog {
+    max-width: 400px;
+}
+#confirm-cancel-modal h3 {
+    margin: 0 0 5px 0;
+    padding: 0;
+    font-size: 1.2em;
+}
+#confirm-cancel-modal .modal-body .btn:first-of-type {
+    margin: 0 5px 0 0;
 }
 
 /*--------------------------------------------------
@@ -162,15 +186,13 @@ header a#add-notice i {
 --------------------------------------------------*/
 .btn {
     margin: 0;
-    padding: 6px 12px;
-    border: none;
+    padding: 5px 11px;
     border-radius: 2px;
     font-size: 12px;
     font-weight: 400;
 }
 .btn:active, .btn:focus, button:active, button:focus  {
     outline: none;
-    border: none;
     box-shadow: none !important;
 }
 .btn-default {
@@ -181,25 +203,42 @@ header a#add-notice i {
     color: #fff;
     background: var(--primary-color-darker);
 }
+.btn-cancel {
+    color: #6574cd;
+    border: 1px solid #6574cd;
+}
+.btn-cancel:hover {
+    color: #374151;
+    border-color: #374151;
+}
 
 .form-control {
     font-size: inherit;
+    border: 1px solid #d2d6db;
 }
 .form-control:focus {
     box-shadow: none;
     border-color: #999;
 }
-form label {
+label {
     margin: 0 0 3px 0;
+    color: #374151;
 }
-form input[type="text"], form textarea {
+input[type="text"], textarea {
     padding: 4px 10px;
     border-radius: 2px;
+    box-shadow: inset 2px 2px 2px 0px #eee;
+}
+input[type="text"]:focus, textarea:focus {
+    box-shadow: inset 2px 2px 2px 0px #eee;
 }
 
-/* New Notice Form */
-#new-notice-form {
+/* Add Notice Form */
+#add-notice-form {
     padding: 0 0 5px 0;
+}
+#add-notice-form .btn.btn-cancel {
+    margin: 0 5px 0 0;
 }
 
 /*--------------------------------------------------
