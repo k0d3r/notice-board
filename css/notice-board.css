@@ -163,6 +163,10 @@ header a#add-notice i {
 #confirm-cancel-modal .modal-dialog {
     max-width: 600px;
 }
+#confirm-cancel-modal .modal-dialog .modal-content {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
 #confirm-cancel-modal h3 {
     margin: 0 0 5px 0;
     padding: 0;

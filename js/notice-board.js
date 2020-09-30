@@ -18,17 +18,18 @@ const truncateString = (string, length) => {
     return string.substring(0, length) + '...'
 }
 
+// Demo AJAX Call - Not reuired as no endpoints defined OR relevant
 const ajaxRequest = (url, data, type) => {
     $.ajax({
         type: 'PUT',
         url: url,
         contentType: 'application/json',
         data: JSON.stringify(data),
-    }).done(function () {
+    }).done(function() {
         console.log('SUCCESS')
-    }).fail(function (msg) {
+    }).fail(function(msg) {
         console.log('FAIL')
-    }).always(function (msg) {
+    }).always(function(msg) {
         console.log('ALWAYS')
     })
 }
@@ -75,7 +76,7 @@ $(function() {
         alert('Comments action clicked')
         event.preventDefault()
     })
-    
+
     /*
      Like buttons - AJAX PUT request to API endpoint passing the data attr data-action param
      The insert should be +1 || -1
@@ -134,7 +135,7 @@ $(function() {
         confirmCancelModal.modal({ backdrop: 'static', keyboard: false })
     })
 
-    // Prevent the submit event on the new notice form
+    // Capture the submit event on the new notice form
     $(document).on('submit', '#add-notice-form', function(event) {
         alert($(this).attr('id') + ' form submitted')
         event.preventDefault()
@@ -155,12 +156,13 @@ $(function() {
     $('.content-modal').on('hidden.bs.modal', function() {
         $('.modal-title, .modal-body', $(this)).empty()
         $(this).removeAttr('id')
-        $(this).removeData('bs.modal') // Remove the bs.modal data variable to reinitialize the modal
+        $(this).removeData('bs.modal') // Remove the bootstrap internal data var bs.modal to reinitialize the modal
         log('.content-modal closed') //ToDo: Remove this
     })
 
-    $('#angela').click(function() {
-        alert('Yo')
+    // Clear the confirm/cancel modal on hide
+    $('#confirm-cancel-modal').on('hidden.bs.modal', function() {
+        $('.modal-title', $(this)).empty()
     })
 
 })
