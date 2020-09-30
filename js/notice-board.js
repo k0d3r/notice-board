@@ -129,7 +129,7 @@ $(function() {
     $(document).on('click', '#add-notice-form .btn-cancel', function() {
         const confirmCancelModal = $('#confirm-cancel-modal')
         
-        $('.modal-body > h3', confirmCancelModal).text('Your notice will not be added')
+        $('.modal-body > h3', confirmCancelModal).text('Your notice will not be added.')
 
         // Prevent closing of the modal on a background click
         confirmCancelModal.modal({ backdrop: 'static', keyboard: false })
