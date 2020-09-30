@@ -1,22 +1,22 @@
 const log = data => {
-    console.log(data);
-};
+    console.log(data)
+}
 
 /*
  Strip HTML tags
  https://ourcodeworld.com/articles/read/376/how-to-strip-html-from-a-string-extract-only-text-content-in-javascript
  */
-const stripHtmlTags = string => string.replace(/<[^>]+>/g, '');
+const stripHtmlTags = string => string.replace(/<[^>]+>/g, '')
 
 const truncateString = (string, length) => {
-    string = stripHtmlTags(string);
+    string = stripHtmlTags(string)
 
     if (string.length < length) {
-        return string;
+        return string
     }
 
-    return string.substring(0, length) + '...';
-};
+    return string.substring(0, length) + '...'
+}
 
 const ajaxRequest = (url, data, type) => {
     $.ajax({
@@ -25,13 +25,13 @@ const ajaxRequest = (url, data, type) => {
         contentType: 'application/json',
         data: JSON.stringify(data),
     }).done(function () {
-        console.log('SUCCESS');
+        console.log('SUCCESS')
     }).fail(function (msg) {
-        console.log('FAIL');
+        console.log('FAIL')
     }).always(function (msg) {
-        console.log('ALWAYS');
-    });
-};
+        console.log('ALWAYS')
+    })
+}
 
 /*
  This markup iterates and renders the notices array from sample-data.js
@@ -62,19 +62,19 @@ const noticeMarkup = notices.map(notice => {
                 </div> <!-- /.row -->
             </div> <!-- /.notice -->
         </div>
-    `;
-});
+    `
+})
 
 $(function() {
     // Add the notices markup to the page
-    $('#notices > .row').html(noticeMarkup);
+    $('#notices > .row').html(noticeMarkup)
 
     // Comment button
     // ToDo: This should open the notice modal and scroll to the comments section OR do nothing
     $('#notices .notice .comments a').click(function(event) {
-        alert('Comments action clicked');
-        event.preventDefault();
-    });
+        alert('Comments action clicked')
+        event.preventDefault()
+    })
     
     /*
      Like buttons - AJAX PUT request to API endpoint passing the data attr data-action param
@@ -82,81 +82,85 @@ $(function() {
      If 200 (OK) reponse - no action. If not a 200 response: an alert or trigger your notification system with request failed (400/500)
      */
     $('#notices .notice .social .likes a').click(function(event) {
-        alert($(this).data('action') + ' action clicked');
-        event.preventDefault();
-    });
+        alert($(this).data('action') + ' action clicked')
+        event.preventDefault()
+    })
 
     // View a notice in a modal
     $('#notices .notice a.view').click(function(event) {
-        const notice = notices.find(notice => notice.id == $(this).closest('.notice').data('id'));
+        const notice = notices.find(notice => notice.id == $(this).closest('.notice').data('id'))
 
-        $('.content-modal').attr('id', 'notice-modal');
+        $('.content-modal').attr('id', 'notice-modal')
 
-        const noticeModal = $('#notice-modal');
+        const noticeModal = $('#notice-modal')
 
         // ToDo: Could this be in a template tag? How to pass in JS template strings?
         const modalContentMarkup = `
             <div class="author">Posted by: ${notice.author}</div>
             <div class="content">${notice.content}</div>
-        `;
+        `
 
-        $('.modal-title', noticeModal).text(notice.title);
-        $('.modal-body', noticeModal).html(modalContentMarkup);
+        $('.modal-title', noticeModal).text(notice.title)
+        $('.modal-body', noticeModal).html(modalContentMarkup)
         
         // Allow closing of the modal on a background click
-        noticeModal.modal({ backdrop: true, keyboard: true });
+        noticeModal.modal({ backdrop: true, keyboard: true })
 
-        event.preventDefault();
-    });
+        event.preventDefault()
+    })
 
     // Show the form for adding a new notice in a modal
     $('#add-notice').click(function(event) {
-        $('.content-modal').attr('id', 'add-notice-modal');
+        $('.content-modal').attr('id', 'add-notice-modal')
         
-        const addNoticeModal = $('#add-notice-modal');
+        const addNoticeModal = $('#add-notice-modal')
         
-        $('.modal-title', addNoticeModal).text('Add Notice');
-        $('.modal-body', addNoticeModal).html( $('#add-notice-form-template').html() );
+        $('.modal-title', addNoticeModal).text('Add Notice')
+        $('.modal-body', addNoticeModal).html( $('#add-notice-form-template').html() )
 
         // Prevent closing of the modal on a background click
-        addNoticeModal.modal({ backdrop: 'static', keyboard: false });
+        addNoticeModal.modal({ backdrop: 'static', keyboard: false })
 
-        event.preventDefault();
-    });
+        event.preventDefault()
+    })
 
     // Show an confirm/cancel dialog box on cancel on the new notice form
     $(document).on('click', '#add-notice-form .btn-cancel', function() {
-        const confirmCancelModal = $('#confirm-cancel-modal');
+        const confirmCancelModal = $('#confirm-cancel-modal')
         
-        $('.modal-body > h3', confirmCancelModal).text('Your notice will not be added');
+        $('.modal-body > h3', confirmCancelModal).text('Your notice will not be added')
 
         // Prevent closing of the modal on a background click
-        confirmCancelModal.modal({ backdrop: 'static', keyboard: false });
-    });
+        confirmCancelModal.modal({ backdrop: 'static', keyboard: false })
+    })
 
     // Prevent the submit event on the new notice form
     $(document).on('submit', '#add-notice-form', function(event) {
-        alert($(this).attr('id') + ' form submitted');
-        event.preventDefault();
-    });
+        alert($(this).attr('id') + ' form submitted')
+        event.preventDefault()
+    })
 
     // Close the parent modal from inside the modal
     $(document).on('click', '.close-parent-modal', function() {
-        const modal = $(this).closest('.modal');
-        modal.modal('hide');
-    });
+        const modal = $(this).closest('.modal')
+        modal.modal('hide')
+    })
 
     // Close all modals with a class of .modal
     $(document).on('click', '.close-modals', function() {
-        $('.modal').modal('hide');
-    });
+        $('.modal').modal('hide')
+    })
 
     // Clear the content modal and reset it on hide
     $('.content-modal').on('hidden.bs.modal', function() {
-        $('.modal-title, .modal-body', $(this)).empty();
-        $(this).removeAttr('id');
-        $(this).removeData('bs.modal'); // Remove the bs.modal data variable to reinitialize the modal
-        log('.content-modal closed'); //ToDo: Remove this
-    });
+        $('.modal-title, .modal-body', $(this)).empty()
+        $(this).removeAttr('id')
+        $(this).removeData('bs.modal') // Remove the bs.modal data variable to reinitialize the modal
+        log('.content-modal closed') //ToDo: Remove this
+    })
 
-});
+    $('#angela').click(function() {
+        alert('Yo')
+    })
+
+})

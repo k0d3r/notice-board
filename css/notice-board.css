@@ -24,7 +24,7 @@ header {
     padding: 20px 0 0 0;
 }
 header a#add-notice {
-    border: 2px solid var(--primary-color);
+    border: 1px solid var(--primary-color);
     color: var(--primary-color);
     background: none;
 }
@@ -123,12 +123,18 @@ header a#add-notice i {
 }
 .modal .modal-header {
     padding: 12px 18px 10px 18px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
 }
 .modal .modal-header h3.modal-title {
     font-size: 1.4em;
 }
 .modal .modal-body p:last-child {
     margin: 0;
+}
+.modal .modal-footer {
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
 }
 .modal .modal-footer button {
     margin: 0;
@@ -155,7 +161,7 @@ header a#add-notice i {
     background: rgba(60, 60, 60, 0.5);
 }
 #confirm-cancel-modal .modal-dialog {
-    max-width: 400px;
+    max-width: 600px;
 }
 #confirm-cancel-modal h3 {
     margin: 0 0 5px 0;
