@@ -70,6 +70,7 @@ $(function() {
     $('#notices > .row').html(noticeMarkup);
 
     // Comment button
+    // ToDo: This should open the notice modal and scroll to the comments section OR do nothing
     $('#notices .notice .comments a').click(function(event) {
         alert('Comments action clicked');
         event.preventDefault();
@@ -123,6 +124,22 @@ $(function() {
         event.preventDefault();
     });
 
+    // Show an confirm/cancel dialog box on cancel on the new notice form
+    $(document).on('click', '#add-notice-form .btn-cancel', function() {
+        const confirmCancelModal = $('#confirm-cancel-modal');
+        
+        $('.modal-body > h3', confirmCancelModal).text('Your notice will not be added');
+
+        // Prevent closing of the modal on a background click
+        confirmCancelModal.modal({ backdrop: 'static', keyboard: false });
+    });
+
+    // Prevent the submit event on the new notice form
+    $(document).on('submit', '#add-notice-form', function(event) {
+        alert($(this).attr('id') + ' form submitted');
+        event.preventDefault();
+    });
+
     // Close the parent modal from inside the modal
     $(document).on('click', '.close-parent-modal', function() {
         const modal = $(this).closest('.modal');
@@ -140,22 +157,6 @@ $(function() {
         $(this).removeAttr('id');
         $(this).removeData('bs.modal'); // Remove the bs.modal data variable to reinitialize the modal
         log('.content-modal closed'); //ToDo: Remove this
-    });
-
-    // Show an confirm/cancel dialog box on cancel
-    $(document).on('click', '#add-notice-form .btn-cancel', function() {
-        const confirmCancelModal = $('#confirm-cancel-modal');
-        
-        $('.modal-body > h3', confirmCancelModal).text('Your notice will not be added');
-
-        // Prevent closing of the modal on a background click
-        confirmCancelModal.modal({ backdrop: 'static', keyboard: false });
-    });
-
-    // Prevent the submit event on the new notice form
-    $(document).on('submit', '#add-notice-form', function(event) {
-        alert($(this).attr('id') + ' form submitted');
-        event.preventDefault();
     });
 
 });
