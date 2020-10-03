@@ -125,26 +125,61 @@ $(function() {
         event.preventDefault()
     })
 
+    // Clear the content modal and reset it on hide
+    $('.content-modal').on('hidden.bs.modal', function() {
+        $('.modal-title, .modal-body', $(this)).empty()
+        $(this).removeAttr('id')
+        $(this).removeData('bs.modal') // Remove the bootstrap internal data var bs.modal to reinitialize the modal
+    })
+
+    // Capture the submit event on the new notice form
+    $(document).on('submit', '#add-notice-form', function(event) {
+        alert(`Form #${$(this).attr('id')} submitted`)
+        event.preventDefault()
+    })
+    
+    /*----------------------------------------------------------------------
+        Confirm/Cancel Dialog Box
+    ----------------------------------------------------------------------*/
+
+    // ToDo: Generic Function for creating the modal
+    // ToDo: Dont forget to destroy it
+    $(document).on('click', '#add-notice-form .btn-cancel', function() {
+        const confirmCancelDialog = $('#confirm-cancel-dialog-template').html()
+        log(confirmCancelDialog)
+        $('.title', confirmCancelDialog).text('Your notice will not be added.')
+        $(this).closest('.modal-content').append(confirmCancelDialog)
+    })
+
+    // Clear the confirm/cancel modal on hide and reset the body styles
+    // ToDo: this should be applied to the confirm cancel
+    $('#confirm-cancel-modal').on('hidden.bs.modal', function() {
+        $('.modal-title', $(this)).empty()
+    })
+
     // Show an confirm/cancel dialog box on cancel on the new notice form
+    // ToDo: Remove or integrate
     $(document).on('click', '#add-notice-form .btn-cancel', function() {
         const confirmCancelModal = $('#confirm-cancel-modal')
         
         $('.modal-body > h3', confirmCancelModal).text('Your notice will not be added.')
 
-        // Prevent closing of the modal on a background click
+        //Prevent closing of the modal on a background click
         confirmCancelModal.modal({ backdrop: 'static', keyboard: false })
     })
 
-    // Capture the submit event on the new notice form
-    $(document).on('submit', '#add-notice-form', function(event) {
-        alert($(this).attr('id') + ' form submitted')
-        event.preventDefault()
-    })
+    //ToDo: Destroy the clone on hide
 
-    // Close the parent modal from inside the modal
-    $(document).on('click', '.close-parent-modal', function() {
-        const modal = $(this).closest('.modal')
-        modal.modal('hide')
+    //ToDo: Heavier bg on the form for the confirm/cancel overlay?
+
+    /*----------------------------------------------------------------------
+        Generic Modal Functions
+    ----------------------------------------------------------------------*/
+
+    // Stop extra padding being applied to elements when a modal is shown
+    $('.modal').on('shown.bs.modal', function() {
+        $('body').css({ 'padding': 0 })
+        $(this).css({ 'padding': 0 })
     })
 
     // Close all modals with a class of .modal
@@ -152,17 +187,10 @@ $(function() {
         $('.modal').modal('hide')
     })
 
-    // Clear the content modal and reset it on hide
-    $('.content-modal').on('hidden.bs.modal', function() {
-        $('.modal-title, .modal-body', $(this)).empty()
-        $(this).removeAttr('id')
-        $(this).removeData('bs.modal') // Remove the bootstrap internal data var bs.modal to reinitialize the modal
-        log('.content-modal closed') //ToDo: Remove this
-    })
-
-    // Clear the confirm/cancel modal on hide
-    $('#confirm-cancel-modal').on('hidden.bs.modal', function() {
-        $('.modal-title', $(this)).empty()
+    // Close the parent modal from inside the modal
+    $(document).on('click', '.close-parent-modal', function() {
+        const modal = $(this).closest('.modal')
+        modal.modal('hide')
     })
 
 })
