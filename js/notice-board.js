@@ -78,9 +78,9 @@ $(function() {
     })
 
     /*
-     Like buttons - AJAX PUT request to API endpoint passing the data attr data-action param
-     The insert should be +1 || -1
-     If 200 (OK) reponse - no action. If not a 200 response: an alert or trigger your notification system with request failed (400/500)
+     Like buttons - AJAX PUT request to API endpoint passing solely the data attr data-action param
+     The insert should be +1 AND -1 so both can be displayed AND/OR a ratio can be displayed on the frontend or computed on the backend for most liked etc
+     If 200 (OK) reponse - no action. If not a 200 response: an alert or trigger your notification system with request failed (400 (Bad Request)/500 (Server Error))
      */
     $('#notices .notice .social .likes a').click(function(event) {
         alert($(this).data('action') + ' action clicked')
