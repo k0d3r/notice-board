@@ -137,40 +137,29 @@ $(function() {
         alert(`Form #${$(this).attr('id')} submitted`)
         event.preventDefault()
     })
+
+    $(document).on('click', '#add-notice-form .btn-cancel', function() {
+        const confirmCancelDialogContent = confirmCancelDialog('Your notice will not be added.')
+        $(this).closest('.modal-content').append(confirmCancelDialogContent)
+    })
     
     /*----------------------------------------------------------------------
         Confirm/Cancel Dialog Box
     ----------------------------------------------------------------------*/
 
-    // ToDo: Generic Function for creating the modal
-    // ToDo: Dont forget to destroy it
-    $(document).on('click', '#add-notice-form .btn-cancel', function() {
-        const confirmCancelDialog = $('#confirm-cancel-dialog-template').html()
-        log(confirmCancelDialog)
-        $('.title', confirmCancelDialog).text('Your notice will not be added.')
-        $(this).closest('.modal-content').append(confirmCancelDialog)
-    })
+    // https://stackoverflow.com/questions/6636622/create-element-from-template-element
+    const confirmCancelDialog = (title) => {
+        const template = $( $('#confirm-cancel-dialog-template').html() )
+        const clone = template.clone()
 
-    // Clear the confirm/cancel modal on hide and reset the body styles
-    // ToDo: this should be applied to the confirm cancel
-    $('#confirm-cancel-modal').on('hidden.bs.modal', function() {
-        $('.modal-title', $(this)).empty()
-    })
-
-    // Show an confirm/cancel dialog box on cancel on the new notice form
-    // ToDo: Remove or integrate
-    $(document).on('click', '#add-notice-form .btn-cancel', function() {
-        const confirmCancelModal = $('#confirm-cancel-modal')
+        $('.title', clone).text(title)
         
-        $('.modal-body > h3', confirmCancelModal).text('Your notice will not be added.')
+        return clone
+    }
 
-        //Prevent closing of the modal on a background click
-        confirmCancelModal.modal({ backdrop: 'static', keyboard: false })
+    $(document).on('click', '.confirm-cancel-dialog .btn', function() {
+        $(this).closest('.confirm-cancel-dialog').remove()
     })
-
-    //ToDo: Destroy the clone on hide
-
-    //ToDo: Heavier bg on the form for the confirm/cancel overlay?
 
     /*----------------------------------------------------------------------
         Generic Modal Functions
