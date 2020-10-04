@@ -67,13 +67,23 @@ const noticeMarkup = notices.map(notice => {
 })
 
 $(function() {
+    
+    // Load the HTML templates into the DOM
+    const loadTemplates = url => {
+        $.ajax({
+            url,
+            dataType: 'html',
+            success(data) {
+                $('body').append(data)
+            },
+            error(error) {
+                log(`An error occurred loading a file from '${url}'. Response: ${error.status} | ${error.statusText}`)
+            }
+        })
+    }    
+    
     // Add the notices markup to the page
     $('#notices > .row').html(noticeMarkup)
-
-    // Load templates
-    $('#angela').click(function(event) {
-        $('body').load('templates.html')
-    })
 
     // Comment button
     // ToDo: This should open the notice modal and scroll to the comments section OR do nothing
@@ -203,4 +213,9 @@ $(function() {
         modal.modal('hide')
     })
 
+    /*----------------------------------------------------------------------
+        Page Load Events
+    ----------------------------------------------------------------------*/
+
+    loadTemplates('templates.html')
 })

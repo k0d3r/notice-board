@@ -1,1 +1,38 @@
-<h1>Template 1 from templates.html</h1>
+<template id="confirm-cancel-dialog-template">
+    <div class="confirm-cancel-dialog">
+        <div class="content text-center">
+            <h3 class="title d-none"></h3>
+            <p class="message">Are you sure you want to cancel?</p>
+            <div class="text-right">
+                <button type="button" class="btn btn-cancel">No</button>
+                <button type="button" class="btn btn-default close-modals">Yes</button>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template id="add-notice-form-template">
+    <form id="add-notice-form" action="" method="POST">
+
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title" class="form-control" placeholder="Enter your title here">
+        </div>
+
+        <div class="form-group">
+            <label for="content">Content</label>
+            <textarea name="content" id="content" class="form-control" rows="6" placeholder="Enter your content here"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="image">Image Upload</label>
+            <input type="file" name="image" id="image" class="form-control-file" multiple>
+        </div>
+
+        <div class="text-right">
+            <button type="button" class="btn btn-cancel">Cancel</button>
+            <button type="submit" class="btn btn-default">Add</button>
+        </div>
+
+    </form>
+</template>
