@@ -160,9 +160,7 @@ $(function() {
 
         const { title, message, vAlign } = options
 
-        if (title) {
-            $('.title', clone).text(title).removeClass('d-none')
-        }
+        title ? $('.title', clone).text(title).removeClass('d-none') : $('.message', clone).addClass('font-weight-bold')
 
         if (message) {
             $('.message', clone).text(message)
