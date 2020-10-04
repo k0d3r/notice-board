@@ -139,7 +139,7 @@ $(function() {
     })
 
     $(document).on('click', '#add-notice-form .btn-cancel', function() {
-        const confirmCancelDialogContent = confirmCancelDialog('Your notice will not be added.')
+        const confirmCancelDialogContent = confirmCancelDialog({ title: 'Your notice will not be added.' })
         $(this).closest('.modal-content').append(confirmCancelDialogContent)
     })
     
@@ -147,12 +147,30 @@ $(function() {
         Confirm/Cancel Dialog Box
     ----------------------------------------------------------------------*/
 
-    // https://stackoverflow.com/questions/6636622/create-element-from-template-element
-    const confirmCancelDialog = (title) => {
+    /*
+     Cloning DOM Elements: https://stackoverflow.com/questions/6636622/create-element-from-template-element
+
+     @param {string} title - The title of the confirm/cancel dialog box. Element is hidden if no value
+     @param {string} message - The message of the confirm/cancel dialog box. Element has a default value
+     @param {string} vAlign - Alignment of the confirm/cancel dialog box. Default top, 'center' vertically aligns center
+     */
+    const confirmCancelDialog = (options = {}) => {
         const template = $( $('#confirm-cancel-dialog-template').html() )
         const clone = template.clone()
 
-        $('.title', clone).text(title)
+        const { title, message, vAlign } = options
+
+        if (title) {
+            $('.title', clone).text(title).removeClass('d-none')
+        }
+
+        if (message) {
+            $('.message', clone).text(message)
+        }
+        
+        if (vAlign && vAlign === 'center') {
+            clone.addClass('v-align-center')
+        }
         
         return clone
     }
