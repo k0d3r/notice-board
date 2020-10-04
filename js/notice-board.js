@@ -1,5 +1,7 @@
 const log = data => {
-    if (window.console) console.log(data)
+    if (window.console) {
+        console.log(data)
+    }
 }
 
 /*
@@ -8,8 +10,10 @@ const log = data => {
  */
 const stripHtmlTags = string => string.replace(/<[^>]+>/g, '')
 
-const truncateString = (string, length) => {
-    string = stripHtmlTags(string)
+const truncateString = (string, length, stripTags = true) => {
+    if (stripTags) {
+        string = stripHtmlTags(string)
+    }
 
     if (string.length < length) {
         return string
@@ -25,11 +29,14 @@ const ajaxRequest = (url, data, type) => {
         url: url,
         contentType: 'application/json',
         data: JSON.stringify(data),
-    }).done(function() {
+    })
+    .done(function() {
         console.log('SUCCESS')
-    }).fail(function(msg) {
+    })
+    .fail(function(msg) {
         console.log('FAIL')
-    }).always(function(msg) {
+    })
+    .always(function(msg) {
         console.log('ALWAYS')
     })
 }
@@ -80,27 +87,14 @@ $(function() {
                 log(`An error occurred loading a file from '${url}'. Response: ${error.status} | ${error.statusText}`)
             }
         })
-    }    
+    }
+
+    /*----------------------------------------------------------------------
+        Notice Display
+    ----------------------------------------------------------------------*/
     
     // Add the notices markup to the page
     $('#notices > .row').html(noticeMarkup)
-
-    // Comment button
-    // ToDo: This should open the notice modal and scroll to the comments section OR do nothing
-    $('#notices .notice .comments a').click(function(event) {
-        alert('Comments action clicked')
-        event.preventDefault()
-    })
-
-    /*
-     Like buttons - AJAX PUT request to API endpoint passing solely the data attr data-action param
-     The insert should be +1 AND -1 so both can be displayed AND/OR a ratio can be displayed on the frontend or computed on the backend for most liked etc
-     If 200 (OK) reponse - no action. If not a 200 response: an alert or trigger your notification system with request failed (400 (Bad Request)/500 (Server Error))
-     */
-    $('#notices .notice .social .likes a').click(function(event) {
-        alert($(this).data('action') + ' action clicked')
-        event.preventDefault()
-    })
 
     // View a notice in a modal
     $('#notices .notice a.view').click(function(event) {
@@ -125,6 +119,27 @@ $(function() {
         event.preventDefault()
     })
 
+    // Comment button
+    // ToDo: This should open the notice modal and scroll to the comments section OR do nothing
+    $('#notices .notice .comments a').click(function(event) {
+        alert('Comments action clicked')
+        event.preventDefault()
+    })
+
+    /*
+     Like buttons - AJAX PUT request to API endpoint passing solely the data attr data-action param
+     The insert should be +1 AND -1 so both can be displayed AND/OR a ratio can be displayed on the frontend or computed on the backend for most liked etc
+     If 200 (OK) reponse - no action. If not a 200 response: an alert or trigger your notification system with request failed (400 (Bad Request)/500 (Server Error))
+     */
+    $('#notices .notice .social .likes a').click(function(event) {
+        alert($(this).data('action') + ' action clicked')
+        event.preventDefault()
+    })
+
+    /*----------------------------------------------------------------------
+        Add a Notice Form
+    ----------------------------------------------------------------------*/
+
     // Show the form for adding a new notice in a modal
     $('#add-notice').click(function(event) {
         $('.content-modal').attr('id', 'add-notice-modal')
@@ -140,13 +155,6 @@ $(function() {
         event.preventDefault()
     })
 
-    // Clear the content modal and reset it on hide
-    $('.content-modal').on('hidden.bs.modal', function() {
-        $('.modal-title, .modal-body', $(this)).empty()
-        $(this).removeAttr('id')
-        $(this).removeData('bs.modal') // Remove the bootstrap internal data var bs.modal to reinitialize the modal
-    })
-
     // Capture the submit event on the new notice form
     $(document).on('submit', '#add-notice-form', function(event) {
         alert(`Form #${$(this).attr('id')} submitted`)
@@ -156,6 +164,38 @@ $(function() {
     $(document).on('click', '#add-notice-form .btn-cancel', function() {
         const confirmCancelDialogContent = confirmCancelDialog({ title: 'Your notice will not be added.' })
         $(this).closest('.modal-content').append(confirmCancelDialogContent)
+    })
+
+    /*----------------------------------------------------------------------
+        Content Modal
+    ----------------------------------------------------------------------*/
+
+    // Clear the content modal and reset it on hide
+    $('.content-modal').on('hidden.bs.modal', function() {
+        $('.modal-title, .modal-body', $(this)).empty()
+        $(this).removeAttr('id')
+        $(this).removeData('bs.modal') // Remove the bootstrap internal data var bs.modal to reinitialize the modal
+    })
+
+    /*----------------------------------------------------------------------
+        Generic Modal Events/Functions
+    ----------------------------------------------------------------------*/
+
+    // Stop extra padding being applied to elements when a modal is shown
+    $('.modal').on('shown.bs.modal', function() {
+        $('body').css({ 'padding': 0 })
+        $(this).css({ 'padding': 0 })
+    })
+
+    // Close all modals with a class of .modal
+    $(document).on('click', '.close-modals', function() {
+        $('.modal').modal('hide')
+    })
+
+    // Close the parent modal from inside the modal
+    $(document).on('click', '.close-parent-modal', function() {
+        const modal = $(this).closest('.modal')
+        modal.modal('hide')
     })
     
     /*----------------------------------------------------------------------
@@ -188,29 +228,9 @@ $(function() {
         return clone
     }
 
+    // Remove the confirm/cancel dialog box from the DOM when any button inside it is clicked
     $(document).on('click', '.confirm-cancel-dialog .btn', function() {
         $(this).closest('.confirm-cancel-dialog').remove()
-    })
-
-    /*----------------------------------------------------------------------
-        Generic Modal Functions
-    ----------------------------------------------------------------------*/
-
-    // Stop extra padding being applied to elements when a modal is shown
-    $('.modal').on('shown.bs.modal', function() {
-        $('body').css({ 'padding': 0 })
-        $(this).css({ 'padding': 0 })
-    })
-
-    // Close all modals with a class of .modal
-    $(document).on('click', '.close-modals', function() {
-        $('.modal').modal('hide')
-    })
-
-    // Close the parent modal from inside the modal
-    $(document).on('click', '.close-parent-modal', function() {
-        const modal = $(this).closest('.modal')
-        modal.modal('hide')
     })
 
     /*----------------------------------------------------------------------
