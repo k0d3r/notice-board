@@ -22,6 +22,20 @@ const truncateString = (string, length, stripTags = true) => {
     return string.substring(0, length) + '...'
 }
 
+// Load the HTML templates into the DOM
+const loadTemplates = url => {
+    $.ajax({
+        url,
+        dataType: 'html',
+        success(data) {
+            $('body').append(data)
+        },
+        error(error) {
+            log(`An error occurred loading a file from '${url}'. Response: ${error.status} | ${error.statusText}`)
+        }
+    })
+}
+
 // Demo AJAX Call - Not reuired as no endpoints defined OR relevant
 const ajaxRequest = (url, data, type) => {
     $.ajax({
@@ -74,20 +88,6 @@ const noticeMarkup = notices.map(notice => {
 })
 
 $(function() {
-    
-    // Load the HTML templates into the DOM
-    const loadTemplates = url => {
-        $.ajax({
-            url,
-            dataType: 'html',
-            success(data) {
-                $('body').append(data)
-            },
-            error(error) {
-                log(`An error occurred loading a file from '${url}'. Response: ${error.status} | ${error.statusText}`)
-            }
-        })
-    }
 
     /*----------------------------------------------------------------------
         Notice Display
