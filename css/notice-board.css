@@ -10,7 +10,7 @@ body {
 }
 
 template {
-    display: none;
+    display: none !important;
 }
 
 .container-fluid {
