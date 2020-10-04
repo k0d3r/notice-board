@@ -1,5 +1,5 @@
 const log = data => {
-    console.log(data)
+    if (window.console) console.log(data)
 }
 
 /*
@@ -69,6 +69,11 @@ const noticeMarkup = notices.map(notice => {
 $(function() {
     // Add the notices markup to the page
     $('#notices > .row').html(noticeMarkup)
+
+    // Load templates
+    $('#angela').click(function(event) {
+        $('body').load('templates.html')
+    })
 
     // Comment button
     // ToDo: This should open the notice modal and scroll to the comments section OR do nothing
