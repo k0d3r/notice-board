@@ -157,7 +157,8 @@ $(function() {
 
     // Capture the submit event on the new notice form
     $(document).on('submit', '#add-notice-form', function(event) {
-        alert(`Form #${$(this).attr('id')} submitted`)
+        //alert(`Form #${$(this).attr('id')} submitted`)
+        alert( sprintf('Form #%s submitted', $(this).attr('id')) )
         event.preventDefault()
     })
 
