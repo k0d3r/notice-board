@@ -23,7 +23,7 @@ const truncateString = (string, length, stripTags = true) => {
 }
 
 // Load the HTML templates into the DOM
-const loadTemplates = url => {
+const loadTemplate = url => {
     $.ajax({
         url,
         dataType: 'html',
@@ -31,7 +31,7 @@ const loadTemplates = url => {
             $('body').append(data)
         },
         error(error) {
-            log(`An error occurred loading a file from '${url}'. Response: ${error.status} | ${error.statusText}`)
+            log(`An error occurred loading a template file from '${url}'. Response: ${error.status} | ${error.statusText}`)
         }
     })
 }
@@ -237,6 +237,6 @@ $(function() {
         Page Load Events
     ----------------------------------------------------------------------*/
 
-    loadTemplates('templates.html')
+    loadTemplate('templates.html')
     
 })

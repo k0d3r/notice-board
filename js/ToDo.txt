@@ -1,0 +1,3 @@
+Consider the confirm/cancel dialog box in handlebars
+
+if no title ste message bold etc...
