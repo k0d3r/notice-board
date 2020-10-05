@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        
+        <meta charset="utf-8">
+        
+        <title>JS Templates</title>
+        
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+        <!-- Roboto Font -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700&display=swap">
+
+        <style>
+            body {
+                margin: 20px;
+                padding: 0;
+                font-family: Roboto, Helvetica, Arial, -apple-system, "Segoe UI", sans-serif;
+                font-size: 12px;
+                background: #ececec;
+            }
+
+            ul#comments {
+                background: #ccc;
+            }
+        </style>
+    
+    </head>
+
+    <body>
+
+        <template id="notice-modal-content-template">
+            <div> <!-- This wrapping element is necessary for cloning it -->
+                <div class="title">Title: ${notice.title}</div>
+                <div class="content">Content: ${notice.content}</div>
+            </div>
+        </template>
+
+        <!-- Handlebars Version -->
+        <template id="notice-modal-content-handelbars-template">
+            <div class="title">Title: {{title}}</div>
+            <div class="title">Title: {{uppercase title}}</div>
+            <div class="title">Title: {{lowercase title}}</div>
+            <div>{{capitalizeEach 'just wow'}}</div>
+            <div class="content">Content: {{content}}</div>
+            
+            {{#each comments}}
+                <li>{{id}}, with comment: {{message}}</li>
+            {{else}}
+                <h5>No Comments for {{title}}</h5>
+            {{/each}}
+            
+            {{#if comments}}
+                <ul id="comments">
+                    {{#each comments}}
+                        <li>Second --- {{id}}, with comment: {{message}}</li>
+                    {{/each}}
+                </ul>
+            {{else}}
+                <h5>Second --- No Comments to display for {{title}}</h5>
+            {{/if}}
+
+        </template>
+
+        <!-- jQuery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+        
+        <!-- Bootstrap & Bootstrap Dependencies -->
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+        <!-- Handlebars -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"
+                integrity="sha512-zT3zHcFYbQwjHdKjCu6OMmETx8fJA9S7E6W7kBeFxultf75OPTYUJigEKX58qgyQMi1m1EgenfjMXlRZG8BXaw=="
+                crossorigin="anonymous">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/just-handlebars-helpers@1.0.18/dist/h.min.js"
+                integrity="sha256-7z2OBq+DRPR6LZvNbbkFx2svKWhhVE6yKQn5Gd6eKfg="
+                crossorigin="anonymous">
+        </script>
+        
+        <script>
+            // Register just-handlebars-helpers with handlebars
+            H.registerHelpers(Handlebars);
+
+            const log = data => {
+                if (window.console) {
+                    console.log(data)
+                }
+            }
+
+            $(function() {
+
+                const notice = {
+                    title: 'Notice Title',
+                    content: 'Notice content',
+                    comments: [
+                        {
+                            id: 1,
+                            message: 'This is comment 1'
+                        },
+                        {
+                            id: 2,
+                            message: 'This is comment 2'
+                        },
+                        {
+                            id: 3,
+                            message: 'This is comment 3'
+                        }
+                    ]
+                }
+                
+                const externalTemplate = $( $('#notice-modal-content-template').html() ).clone()
+
+                const modalContentMarkupInlineTemplate = `
+                    <div class="title">Title: ${notice.title}</div>
+                    <div class="content">Content: ${notice.content}</div>
+                `
+                
+                // Handlebars Version
+                const template = Handlebars.compile( $('#notice-modal-content-handelbars-template').html() )
+                
+                $('body').append(modalContentMarkupInlineTemplate)
+                $('body').append('<br><br>')
+
+                $('body').append(externalTemplate)
+                $('body').append('<br><br>')
+
+                $('body').append( template(notice) )
+                $('body').append('<br><br>')
+            })
+        </script>
+        
+    </body>
+
+</html>
