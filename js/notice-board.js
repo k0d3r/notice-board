@@ -23,7 +23,7 @@ const truncateString = (string, length, stripTags = true) => {
 }
 
 // Load the HTML templates into the DOM
-const loadTemplate = url => {
+const injectTemplate = url => {
     $.ajax({
         url,
         dataType: 'html',
@@ -237,6 +237,6 @@ $(function() {
         Page Load Events
     ----------------------------------------------------------------------*/
 
-    loadTemplate('templates.html')
+    injectTemplate('templates.html')
     
 })
