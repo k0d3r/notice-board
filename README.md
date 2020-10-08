@@ -1,9 +1,9 @@
 ### External Dependency Versions
 Updated Oct 2020 to their most recent releases
-[Bootstrap](https://getbootstrap.com/)
-[jQuery](https://jquery.com/)
-[Font Awesome](https://fontawesome.com/)
-[sprintf-js](https://github.com/alexei/sprintf.js)
+[Bootstrap](https://getbootstrap.com/)  
+[jQuery](https://jquery.com/)  
+[Font Awesome](https://fontawesome.com/)  
+[sprintf-js](https://github.com/alexei/sprintf.js)  
 
 ### Polyfills
 https://www.webcomponents.org/polyfills
