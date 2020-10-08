@@ -5,6 +5,9 @@ Updated Oct 2020 to their most recent releases
 [Font Awesome](https://fontawesome.com/)  
 [sprintf-js](https://github.com/alexei/sprintf.js)  
 
+[Handlebars](https://handlebarsjs.com/)  
+[Handlebars Helpers](https://www.npmjs.com/package/just-handlebars-helpers)  
+
 ### Polyfills
 https://www.webcomponents.org/polyfills
 https://developer.aliyun.com/mirror/npm/package/@webcomponents/webcomponentsjs
