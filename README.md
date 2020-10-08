@@ -1,5 +1,5 @@
 ### External Dependency Versions
-Updated Oct 2020 to their most recent releases
+Updated Oct 2020 to their most recent releases  
 [Bootstrap](https://getbootstrap.com/)  
 [jQuery](https://jquery.com/)  
 [Font Awesome](https://fontawesome.com/)  
