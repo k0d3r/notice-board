@@ -1,4 +1,4 @@
-### External Dependency Versions
+### External Dependencies
 Updated Oct 2020 to their most recent releases  
 [Bootstrap](https://getbootstrap.com/)  
 [jQuery](https://jquery.com/)  
