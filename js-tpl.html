@@ -26,6 +26,10 @@
             ul#comments {
                 background: #ccc;
             }
+
+            .bg-red {
+                background: red;
+            }
         </style>
     
     </head>
@@ -55,7 +59,7 @@
             {{#if comments}}
                 <ul id="comments">
                     {{#each comments}}
-                        <li>Second --- {{id}}, with comment: {{message}}</li>
+                        <li class="something {{#if (eq id 1)}}bg-red{{/if}}">Second --- {{id}}, with comment: {{message}}</li>
                     {{/each}}
                 </ul>
             {{else}}

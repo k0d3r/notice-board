@@ -8,6 +8,8 @@ Updated Oct 2020 to their most recent releases
 [Handlebars](https://handlebarsjs.com/)  
 [Handlebars Helpers](https://www.npmjs.com/package/just-handlebars-helpers)  
 
+[Day.js](https://day.js.org/en/)  
+
 ### Polyfills
 https://www.webcomponents.org/polyfills
 https://developer.aliyun.com/mirror/npm/package/@webcomponents/webcomponentsjs
