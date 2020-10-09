@@ -17,7 +17,7 @@ const notices = [
         id: 2,
         title: 'Title Two',
         content: '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio.</p>',
-        date: '2020-09-04 10:17:20',
+        date: '2019-09-04 10:17:20',
         author: 'Jack Jules',
         likes: 1,
         dislikes: 2,

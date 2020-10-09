@@ -6,6 +6,7 @@ const log = data => {
 
 // Day.js Plugins
 dayjs.extend(dayjs_plugin_relativeTime)
+dayjs.extend(dayjs_plugin_advancedFormat)
 
 /*
  Strip HTML tags
@@ -70,6 +71,7 @@ const noticeMarkup = notices.map(notice => {
                 <div class="title">${stripHtmlTags(notice.title)}</div>
                 <div class="content">${truncateString(notice.content, 120)}</div>
                 <div class="author">${notice.author}</div>
+                <div class="date">${notice.date} | ${dayjs(notice.date).format('MMM Do YYYY, hh:mm A')}</div>
                 <div class="date">${dayjs(notice.date).fromNow()}</div>
                 <div class="row">
                     <div class="col-sm-8">

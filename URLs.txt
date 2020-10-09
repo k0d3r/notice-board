@@ -53,6 +53,12 @@ https://css-tricks.com/template-literals/
 https://www.javascripttutorial.net/es6/javascript-template-literals/
 https://stackoverflow.com/questions/53840093/efficient-method-of-inserting-jquery-elements-within-template-literals
 
+https://stackoverflow.com/questions/42881438/template-literals-from-external-file
+https://stackoverflow.com/questions/39584241/es6-string-interpolation-from-file-content
+https://stackoverflow.com/questions/35345374/how-to-interpret-file-content-as-template-string
+https://stackoverflow.com/questions/30003353/can-es6-template-literals-be-substituted-at-runtime-or-reused
+https://stackoverflow.com/questions/53840093/efficient-method-of-inserting-jquery-elements-within-template-literals
+
 -----------------------------------------------------------------------------
     Template Tag
 -----------------------------------------------------------------------------
@@ -66,7 +72,22 @@ https://dev.to/ahferroin7/the-html5-template-element-26b6
 
 https://www.geeksforgeeks.org/jquery-clone-with-examples/
 
+-----------------------------------------------------------------------------
+    Handlebars & Template Helpers
+-----------------------------------------------------------------------------
 
+https://github.com/jonschlinkert/template-helpers#eq
+https://www.npmjs.com/package/just-handlebars-helpers#showif
+https://developer.aliyun.com/mirror/npm/package/just-handlebars-helpers
+https://github.com/handlebars-lang/handlebars.js?utm_source=cdnjs&utm_medium=cdnjs_link&utm_campaign=cdnjs_library
+https://handlebarsjs.com/guide/builtin-helpers.html#with
+https://handlebarsjs.com/guide/block-helpers.html#the-with-helper
+https://subscription.packtpub.com/book/web_development/9781783282654/1/ch01lvl1sec06/top-6-features-you-need-to-know-about
+https://medium.com/@thejasonfile/creating-templates-with-handlebars-js-15c2fa45859
+https://stackoverflow.com/questions/11915839/is-there-a-ternary-operator-in-handlebars-js
+https://stackoverflow.com/questions/39395463/print-compiled-handlebar-template-without-data-filled-in
+https://www.sitepoint.com/a-beginners-guide-to-handlebars/
+http://browserify.org/
 
 
 
