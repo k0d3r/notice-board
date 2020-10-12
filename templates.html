@@ -6,7 +6,7 @@
 <template id="notice-template">
     <div class="col-md-6 col-lg-4">
         <div class="notice shadow" data-id="{{id}}">
-            <div class="title">{{title}}</div> <!-- ToDo: Are the html tags stripped? -->
+            <div class="title">{{uppercase title}}</div> <!-- ToDo: Are the html tags stripped? -->
             <div class="content">{{content}}</div> <!-- ToDo: Are the html tags stripped? and is the content truncated to 120 chars? -->
             <div class="author">{{author}}</div>
             <div class="date">${notice.date} | ${dayjs(notice.date).format('MMM Do YYYY, hh:mm A')}</div>
