@@ -1,6 +1,7 @@
 const notices = [
     {
         id: 1,
+        sticky: false,
         title: 'Title One',
         content: '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros.</p>',
         date: '2020-10-04 08:09:32',
@@ -15,6 +16,7 @@ const notices = [
     },
     {
         id: 2,
+        sticky: true,
         title: 'Title Two',
         content: '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio.</p>',
         date: '2019-09-04 10:17:20',
@@ -25,6 +27,7 @@ const notices = [
     },
     {
         id: 3,
+        sticky: false,
         title: 'Title Three With a Really Long Title',
         content: '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p>',
         date: '2020-10-08 09:14:21',
@@ -54,6 +57,7 @@ const notices = [
     },
     {
         id: 4,
+        sticky: true,
         title: 'Title Four',
         content: '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p>',
         date: '2020-10-06 10:14:21',
@@ -71,6 +75,7 @@ const notices = [
     },
     {
         id: 5,
+        sticky: false,
         title: 'Title Five',
         content: '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p>',
         date: '2020-10-05 17:01:12',
