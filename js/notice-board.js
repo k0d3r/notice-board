@@ -67,7 +67,6 @@ const ajaxRequest = (url, data, type) => {
  The actual data in the notices array should be returned from a DB query. JS .map() here is just for demo purposes
  The HTML structure and CSS classes should be used to render the DB resultset looped foreach() HTML output
  */
- /*
 const noticeMarkup = notices.map(notice => {
     return `
         <div class="col-md-6 col-lg-4">
@@ -95,7 +94,6 @@ const noticeMarkup = notices.map(notice => {
         </div>
     `
 })
-*/
 
 $(function() {
 
@@ -104,8 +102,8 @@ $(function() {
     ----------------------------------------------------------------------*/
     
     // Add the notices markup to the page
-    const noticeTemplate = Handlebars.compile( $('#notice-template').html() )
-    const noticeMarkup = notices.map(notice => noticeTemplate(notice) )
+    //const noticeTemplate = Handlebars.compile( $('#notice-template').html() )
+    //const noticeMarkup = notices.map(notice => noticeTemplate(notice) )
     $('#notices > .row').html(noticeMarkup)
 
     // View a notice in a modal
