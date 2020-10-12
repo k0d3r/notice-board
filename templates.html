@@ -3,6 +3,32 @@
     <div class="content">${notice.content}</div>
 </template> -->
 
+<template id="notice-template">
+    <div class="col-md-6 col-lg-4">
+        <div class="notice shadow" data-id="{{id}}">
+            <div class="title">{{title}}</div> <!-- ToDo: Are the html tags stripped? -->
+            <div class="content">{{content}}</div> <!-- ToDo: Are the html tags stripped? and is the content truncated to 120 chars? -->
+            <div class="author">{{author}}</div>
+            <div class="date">${notice.date} | ${dayjs(notice.date).format('MMM Do YYYY, hh:mm A')}</div>
+            <div class="date">${dayjs(notice.date).fromNow()}</div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="social">
+                        <span class="comments"><a href="#"><i class="far fa-comment"></i></a>${notice.comments.length}</span>
+                        <span class="likes">
+                            <a href="#" data-action="like"><i class="far fa-thumbs-up"></i></a> {{likes}}
+                            <a href="#" data-action="dislike"><i class="far fa-thumbs-down"></i></a> {{dislikes}}
+                        </span>
+                    </div> <!-- /.social -->
+                </div>
+                <div class="col-sm-4 d-flex flex-row-reverse">
+                    <a class="view btn btn-default" href="#" role="button">View</a>
+                </div>
+            </div> <!-- /.row -->
+        </div> <!-- /.notice -->
+    </div>
+</template>
+
 <template id="confirm-cancel-dialog-template">
     <div class="confirm-cancel-dialog">
         <div class="content text-center">
