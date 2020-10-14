@@ -106,7 +106,6 @@ $(function() {
     const addNoticesToDom = () => {
         const noticeTemplate = Handlebars.compile( $('#notice-template').html() )
         const noticeMarkup = notices.map(notice => noticeTemplate(notice) )
-        //log(noticeMarkup)
         $('#notices > .row').html(noticeMarkup)
     }
 
@@ -135,6 +134,12 @@ $(function() {
 
     // Comment button
     // ToDo: This should open the notice modal and scroll to the comments section OR do nothing
+
+    /*
+     When a comment is added it should be added to the top of the comments list
+     If notices are sorted by comment count filter, do the notices get reloaded into the DOM when the API returns a successful insert?
+     Is this an AJAX request or a new page load?
+     */
     $(document).on('click', '#notices .notice .comments a', function(event) {
         alert('Comments action clicked')
         event.preventDefault()
@@ -144,6 +149,10 @@ $(function() {
      Like buttons - AJAX PUT request to API endpoint passing solely the data attr data-action param
      The insert should be +1 AND -1 so both can be displayed AND/OR a ratio can be displayed on the frontend or computed on the backend for most liked etc
      If 200 (OK) reponse - no action. If not a 200 response: an alert or trigger your notification system with request failed (400 (Bad Request)/500 (Server Error))
+
+     Only 1 like or dislike per person, their userID is stored along with their action. They can change their like to a dislike or vice-versa
+     If notices are sorted by a like filter, do the notices get reloaded into the DOM when the API returns a successful insert?
+     Is this an AJAX request or a new page load?
      */
     $(document).on('click', '#notices .notice .social .likes a', function(event) {
         alert( sprintf('%s action clicked', $(this).data('action')) )
