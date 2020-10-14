@@ -13,12 +13,14 @@ H.registerHelpers(Handlebars)
 
 // Handlebars Helpers
 Handlebars.registerHelper('stripHtmlTags', function(string) {
-    const output = stripHtmlTags(string)
+    let output = stripHtmlTags(string)
+    output = Handlebars.escapeExpression(output)
     return new Handlebars.SafeString(output)
 })
 
 Handlebars.registerHelper('truncateString', function(string, length, stripTags = true) {
-    const output = truncateString(string, length)
+    let output = truncateString(string, length)
+    output = Handlebars.escapeExpression(output)
     return new Handlebars.SafeString(output)
 })
 
@@ -87,7 +89,7 @@ $(function() {
             dataType: 'html',
             success(data) {
                 $('body').append(data)
-                addNoticesToDom() // ToDo: Should be a callback
+                addNoticesToDom() // ToDo: This should be a callback
             },
             error(error) {
                 log(`An error occurred loading a template file from '${url}'. Response: ${error.status} | ${error.statusText}`)
