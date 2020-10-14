@@ -11,11 +11,7 @@ dayjs.extend(dayjs_plugin_advancedFormat)
 // Register just-handlebars-helpers with handlebars
 H.registerHelpers(Handlebars)
 
-Handlebars.registerHelper('bold', function(text) {
-    var result = "<b>" +  + "</b>";
-    return new Handlebars.SafeString(result);
-})
-
+// Handlebars Helpers
 Handlebars.registerHelper('stripHtmlTags', function(string) {
     const output = stripHtmlTags(string)
     return new Handlebars.SafeString(output)
@@ -78,41 +74,6 @@ const ajaxRequest = (url, data, type) => {
     })
 }
 
-/*
- This markup iterates and renders the notices array from sample-data.js
- The actual data in the notices array should be returned from a DB query. JS .map() here is just for demo purposes
- The HTML structure and CSS classes should be used to render the DB resultset looped foreach() HTML output
- */
- /*
-const noticeMarkup = notices.map(notice => {
-    return `
-        <div class="col-md-6 col-lg-4">
-            <div class="notice shadow" data-id="${notice.id}">
-                <div class="title">${stripHtmlTags(notice.title)}</div>
-                <div class="content">${truncateString(notice.content, 120)}</div>
-                <div class="author">${notice.author}</div>
-                <div class="date">${notice.date} | ${dayjs(notice.date).format('MMM Do YYYY, hh:mm A')}</div>
-                <div class="date">${dayjs(notice.date).fromNow()}</div>
-                <div class="row">
-                    <div class="col-sm-8">
-                        <div class="social">
-                            <span class="comments"><a href="#"><i class="far fa-comment"></i></a>${notice.comments.length}</span>
-                            <span class="likes">
-                                <a href="#" data-action="like"><i class="far fa-thumbs-up"></i></a> ${notice.likes}
-                                <a href="#" data-action="dislike"><i class="far fa-thumbs-down"></i></a> ${notice.dislikes}
-                            </span>
-                        </div> <!-- /.social -->
-                    </div>
-                    <div class="col-sm-4 d-flex flex-row-reverse">
-                        <a class="view btn btn-default" href="#" role="button">View</a>
-                    </div>
-                </div> <!-- /.row -->
-            </div> <!-- /.notice -->
-        </div>
-    `
-})
-*/
-
 $(function() {
 
     /*----------------------------------------------------------------------
@@ -135,6 +96,11 @@ $(function() {
     }
 
     // Add the notices markup to the page
+    /*
+     This function iterates and renders the notices array from sample-data.js
+     The actual data in the notices array should be returned from a DB query
+     If you want to render the notices server-side remove this function but use the HTML structure and CSS classes from the template
+     */
     const addNoticesToDom = () => {
         const noticeTemplate = Handlebars.compile( $('#notice-template').html() )
         const noticeMarkup = notices.map(notice => noticeTemplate(notice) )
@@ -143,7 +109,7 @@ $(function() {
     }
 
     // View a notice in a modal
-    $('#notices .notice a.view').click(function(event) {
+    $(document).on('click', '#notices .notice a.view', function(event) {
         const notice = notices.find(notice => notice.id == $(this).closest('.notice').data('id'))
 
         $('.content-modal').attr('id', 'notice-modal')
@@ -167,7 +133,7 @@ $(function() {
 
     // Comment button
     // ToDo: This should open the notice modal and scroll to the comments section OR do nothing
-    $('#notices .notice .comments a').click(function(event) {
+    $(document).on('click', '#notices .notice .comments a', function(event) {
         alert('Comments action clicked')
         event.preventDefault()
     })
@@ -177,8 +143,8 @@ $(function() {
      The insert should be +1 AND -1 so both can be displayed AND/OR a ratio can be displayed on the frontend or computed on the backend for most liked etc
      If 200 (OK) reponse - no action. If not a 200 response: an alert or trigger your notification system with request failed (400 (Bad Request)/500 (Server Error))
      */
-    $('#notices .notice .social .likes a').click(function(event) {
-        alert($(this).data('action') + ' action clicked')
+    $(document).on('click', '#notices .notice .social .likes a', function(event) {
+        alert( sprintf('%s action clicked', $(this).data('action')) )
         event.preventDefault()
     })
 
