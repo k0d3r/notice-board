@@ -11,6 +11,36 @@ dayjs.extend(dayjs_plugin_advancedFormat)
 // Register just-handlebars-helpers with handlebars
 H.registerHelpers(Handlebars)
 
+Handlebars.registerHelper('bold', function(text) {
+    var result = "<b>" +  + "</b>";
+    return new Handlebars.SafeString(result);
+})
+
+Handlebars.registerHelper('stripHtmlTags', function(string) {
+    const output = stripHtmlTags(string)
+    return new Handlebars.SafeString(output)
+})
+
+Handlebars.registerHelper('truncateString', function(string, length, stripTags = true) {
+    const output = truncateString(string, length)
+    return new Handlebars.SafeString(output)
+})
+
+Handlebars.registerHelper('formatDate', function(date, format) {
+    let output = Handlebars.escapeExpression(date)
+    date = dayjs(date)
+
+    switch (format) {
+        case 'fromNow':
+            output = date.fromNow()
+            break
+        default:
+            output = date.format(format)
+    }
+
+    return new Handlebars.SafeString(output)
+})
+
 /*
  Strip HTML tags
  https://ourcodeworld.com/articles/read/376/how-to-strip-html-from-a-string-extract-only-text-content-in-javascript
@@ -27,20 +57,6 @@ const truncateString = (string, length, stripTags = true) => {
     }
 
     return string.substring(0, length) + '...'
-}
-
-// Load the HTML templates into the DOM
-const injectTemplate = url => {
-    $.ajax({
-        url,
-        dataType: 'html',
-        success(data) {
-            $('body').append(data)
-        },
-        error(error) {
-            log(`An error occurred loading a template file from '${url}'. Response: ${error.status} | ${error.statusText}`)
-        }
-    })
 }
 
 // Demo AJAX Call - Not reuired as no endpoints defined OR relevant
@@ -67,6 +83,7 @@ const ajaxRequest = (url, data, type) => {
  The actual data in the notices array should be returned from a DB query. JS .map() here is just for demo purposes
  The HTML structure and CSS classes should be used to render the DB resultset looped foreach() HTML output
  */
+ /*
 const noticeMarkup = notices.map(notice => {
     return `
         <div class="col-md-6 col-lg-4">
@@ -94,6 +111,7 @@ const noticeMarkup = notices.map(notice => {
         </div>
     `
 })
+*/
 
 $(function() {
 
@@ -101,10 +119,28 @@ $(function() {
         Notice Display
     ----------------------------------------------------------------------*/
     
+    // Load the HTML templates into the DOM
+    const injectTemplate = (url) => {
+        return $.ajax({
+            url: `templates/${url}`,
+            dataType: 'html',
+            success(data) {
+                $('body').append(data)
+                addNoticesToDom() // ToDo: Should be a callback
+            },
+            error(error) {
+                log(`An error occurred loading a template file from '${url}'. Response: ${error.status} | ${error.statusText}`)
+            }
+        })
+    }
+
     // Add the notices markup to the page
-    //const noticeTemplate = Handlebars.compile( $('#notice-template').html() )
-    //const noticeMarkup = notices.map(notice => noticeTemplate(notice) )
-    $('#notices > .row').html(noticeMarkup)
+    const addNoticesToDom = () => {
+        const noticeTemplate = Handlebars.compile( $('#notice-template').html() )
+        const noticeMarkup = notices.map(notice => noticeTemplate(notice) )
+        //log(noticeMarkup)
+        $('#notices > .row').html(noticeMarkup)
+    }
 
     // View a notice in a modal
     $('#notices .notice a.view').click(function(event) {
@@ -248,5 +284,9 @@ $(function() {
     ----------------------------------------------------------------------*/
 
     injectTemplate('templates.html')
+
+    // injectTemplate('templates.html').done(
+    //     addNoticesToDom()
+    // )
     
 })
