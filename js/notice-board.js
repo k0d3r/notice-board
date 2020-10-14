@@ -86,6 +86,7 @@ $(function() {
     const injectTemplate = (url) => {
         return $.ajax({
             url: `templates/${url}`,
+            type: 'GET',
             dataType: 'html',
             success(data) {
                 $('body').append(data)
