@@ -4,7 +4,7 @@ const notices = [
         sticky: false,
         title: 'Title One',
         content: '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros.</p>',
-        date: '2020-10-04 08:09:32',
+        date: '2020-10-14 19:40:32',
         author: 'John James',
         likes: 6,
         dislikes: 1,
