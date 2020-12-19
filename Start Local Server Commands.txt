@@ -1,0 +1,5 @@
+cd ~/Desktop/notice-board
+
+browser-sync start --server --files ["*.html", "*.css", "*.js"]
+
+browser-sync start --server --files "css/*.css"
