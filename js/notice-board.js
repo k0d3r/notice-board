@@ -4,41 +4,6 @@ const log = data => {
     }
 }
 
-// Day.js Plugins
-dayjs.extend(dayjs_plugin_relativeTime)
-dayjs.extend(dayjs_plugin_advancedFormat)
-
-// Register just-handlebars-helpers with handlebars
-H.registerHelpers(Handlebars)
-
-// Handlebars Helpers
-Handlebars.registerHelper('stripHtmlTags', function(string) {
-    let output = stripHtmlTags(string)
-    output = Handlebars.escapeExpression(output)
-    return new Handlebars.SafeString(output)
-})
-
-Handlebars.registerHelper('truncateString', function(string, length, stripTags = true) {
-    let output = truncateString(string, length)
-    output = Handlebars.escapeExpression(output)
-    return new Handlebars.SafeString(output)
-})
-
-Handlebars.registerHelper('formatDate', function(date, format) {
-    let output = Handlebars.escapeExpression(date)
-    date = dayjs(date)
-
-    switch (format) {
-        case 'fromNow':
-            output = date.fromNow()
-            break
-        default:
-            output = date.format(format)
-    }
-
-    return new Handlebars.SafeString(output)
-})
-
 /*
  Strip HTML tags
  https://ourcodeworld.com/articles/read/376/how-to-strip-html-from-a-string-extract-only-text-content-in-javascript
@@ -56,6 +21,60 @@ const truncateString = (string, length, stripTags = true) => {
 
     return string.substring(0, length) + '...'
 }
+
+const getCurrentUrl = () => {
+
+}
+
+log( getCurrentUrl() )
+
+// Day.js Plugins
+dayjs.extend(dayjs_plugin_relativeTime)
+dayjs.extend(dayjs_plugin_advancedFormat)
+
+// Register just-handlebars-helpers with handlebars
+H.registerHelpers(Handlebars)
+
+// Handlebars Helpers
+const handlebarsHelpers = {
+    stripHtmlTags(string) {
+        let output = stripHtmlTags(string)
+        output = Handlebars.escapeExpression(output)
+        return new Handlebars.SafeString(output)
+    },
+    truncateString(string, length, stripTags = true) {
+        let output = truncateString(string, length)
+        output = Handlebars.escapeExpression(output)
+        return new Handlebars.SafeString(output)
+    },
+    formatDate(date, format) {
+        let output = Handlebars.escapeExpression(date)
+        date = dayjs(date)
+
+        switch (format) {
+            case 'fromNow':
+                output = date.fromNow()
+                break
+            default:
+                output = date.format(format)
+        }
+
+        return new Handlebars.SafeString(output)
+    },
+    bold(string) {
+        let output = Handlebars.escapeExpression(string)
+        output = `<strong>${string}</strong>`
+        return new Handlebars.SafeString(output)
+    }
+}
+
+Handlebars.registerHelper(handlebarsHelpers)
+
+/*
+const quill = new Quill('.rich-text', {
+    theme: 'snow'
+})
+*/
 
 // Demo AJAX Call - Not reuired as no endpoints defined OR relevant
 const ajaxRequest = (url, data, type) => {

@@ -5,12 +5,14 @@
 
 <template id="notice-template">
     <div class="col-md-6 col-lg-4">
-        <div class="notice shadow" data-id="{{id}}" data-like-ratio="{{difference likes dislikes}}" data-sticky="{{sticky}}">
+        <div class="notice" data-id="{{id}}" data-like-ratio="{{difference likes dislikes}}" data-sticky="{{sticky}}">
             <div class="title">{{stripHtmlTags title}}</div>
             <div class="content">{{truncateString content 120}}</div>
             <div class="author">{{author}}</div>
             <div class="date">{{date}} | {{formatDate date 'MMM Do YYYY, hh:mm A'}}</div>
             <div class="date">{{formatDate date 'fromNow'}}</div>
+            <div>{{ uppercase (bold 'Jack') }}</div>
+            <div>{{bold 'James'}}</div>
             <div class="row">
                 <div class="col-sm-8">
                     <div class="social">
