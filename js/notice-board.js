@@ -70,25 +70,6 @@ const quill = new Quill('.rich-text', {
 })
 */
 
-// Demo AJAX Call - Not reuired as no endpoints defined OR relevant
-const ajaxRequest = (url, data, type) => {
-    $.ajax({
-        type: 'PUT',
-        url: url,
-        contentType: 'application/json',
-        data: JSON.stringify(data),
-    })
-    .done(function() {
-        console.log('SUCCESS')
-    })
-    .fail(function(msg) {
-        console.log('FAIL')
-    })
-    .always(function(msg) {
-        console.log('ALWAYS')
-    })
-}
-
 $(function() {
 
     /*----------------------------------------------------------------------
