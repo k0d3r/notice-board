@@ -203,6 +203,8 @@ $(function() {
         Content Modal
     ----------------------------------------------------------------------*/
 
+    // ToDo: Why not just clear all .model contents on hide? 
+
     // Clear the content modal and reset it on hide
     $('.content-modal').on('hidden.bs.modal', function() {
         $('.modal-title, .modal-body', $(this)).empty()
@@ -248,6 +250,8 @@ $(function() {
 
         const { title, message, vAlign } = options
 
+        // Why not just bold by default
+        // Comment d-none? Why not display:none?
         title ? $('.title', clone).text(title).removeClass('d-none') : $('.message', clone).addClass('font-weight-bold')
 
         if (message) {
