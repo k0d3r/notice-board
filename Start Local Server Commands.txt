@@ -1,5 +1,3 @@
-cd ~/Desktop/notice-board
+In the dir - Bash/Cmd Prompt here 
 
 browser-sync start --server --files ["*.html", "*.css", "*.js"]
-
-browser-sync start --server --files "css/*.css"

@@ -22,12 +22,6 @@ const truncateString = (string, length, stripTags = true) => {
     return string.substring(0, length) + '...'
 }
 
-const getCurrentUrl = () => {
-
-}
-
-log( getCurrentUrl() )
-
 // Day.js Plugins
 dayjs.extend(dayjs_plugin_relativeTime)
 dayjs.extend(dayjs_plugin_advancedFormat)

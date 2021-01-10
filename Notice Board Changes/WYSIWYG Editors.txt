@@ -1,0 +1,12 @@
+
+https://github.com/JefMari/awesome-wysiwyg#standalone
+https://github.com/jaredreich/pell
+https://github.com/quilljs/quill
+https://quilljs.com/docs/quickstart/
+https://quilljs.com/docs/download/
+https://quilljs.com/playground/
+https://www.npmtrends.com/medium-editor-vs-pell-vs-quill-vs-squire-rte-vs-tinymce-vs-trix-vs-tui-editor
+https://www.npmtrends.com/medium-editor-vs-pell-vs-quill-vs-squire-rte-vs-tinymce-vs-tui-editor
+https://www.npmtrends.com/pell-vs-quill-vs-trumbowyg
+https://github.com/nhn/tui.editor
+https://reposhub.com/javascript/editors/jaredreich-pell.html
