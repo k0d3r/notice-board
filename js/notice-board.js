@@ -1,3 +1,6 @@
+/*----------------------------------------------------------------------
+    Generic Functions
+----------------------------------------------------------------------*/
 const log = data => {
     if (window.console) {
         console.log(data)
@@ -22,9 +25,17 @@ const truncateString = (string, length, stripTags = true) => {
     return string.substring(0, length) + '...'
 }
 
+/*----------------------------------------------------------------------
+    Day.js
+----------------------------------------------------------------------*/
+
 // Day.js Plugins
 dayjs.extend(dayjs_plugin_relativeTime)
 dayjs.extend(dayjs_plugin_advancedFormat)
+
+/*----------------------------------------------------------------------
+    Handlebars
+----------------------------------------------------------------------*/
 
 // Register just-handlebars-helpers with handlebars
 H.registerHelpers(Handlebars)
@@ -63,6 +74,10 @@ const handlebarsHelpers = {
 }
 
 Handlebars.registerHelper(handlebarsHelpers)
+
+/*----------------------------------------------------------------------
+    Quill
+----------------------------------------------------------------------*/
 
 /*
 const quill = new Quill('.rich-text', {
