@@ -19,7 +19,7 @@ https://www.codementor.io/@bennyp/lets-build-web-components-part-2-the-polyfills
 https://www.materialui.co/colors
 
 ### Start Local Server Command
-https://www.npmjs.com/package/browser-sync
+https://www.npmjs.com/package/browser-sync  
 https://browsersync.io/
 
 In the dir - Bash/Cmd Prompt here (cd D:\notice-board)
