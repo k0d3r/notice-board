@@ -1,0 +1,36 @@
+#covid-measures-form h2 {
+    text-transform: none;
+}
+#covid-measures-form input[type="checkbox"] {
+    width: 16px !important;
+    height: 16px !important;
+    padding: 1px 0 0 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    box-shadow: none;
+    font-size: 14px;
+    text-align: center;
+    line-height: 1em;
+    outline: none;
+    border: 1px solid #636c7e;
+    border-radius: 2px;
+    cursor: pointer;
+    background: none;
+}
+#covid-measures-form input[type="checkbox"]:checked {
+    border: none;
+    background: #f25622;
+}
+#covid-measures-form input[type="checkbox"]:checked:after {
+    content: '\2713';
+    color: #fff;
+}
+#covid-measures-form label {
+    height: auto;
+    max-width: initial;
+    margin: 2px 0 0 4px;
+    text-transform: none;
+    font-weight: normal;
+    -webkit-line-clamp: initial;

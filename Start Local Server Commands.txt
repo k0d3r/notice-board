@@ -1,3 +1,4 @@
 In the dir - Bash/Cmd Prompt here 
+cd D:\notice-board
 
 browser-sync start --server --files ["*.html", "*.css", "*.js"]
