@@ -22,5 +22,5 @@ https://www.materialui.co/colors
 https://www.npmjs.com/package/browser-sync  
 https://browsersync.io/
 
-In the dir - Bash/Cmd Prompt here (cd D:\notice-board)
+In the dir - Bash/Cmd Prompt here (cd D:\notice-board)  
 browser-sync start --server --files ["*.html", "*.css", "*.js"]
