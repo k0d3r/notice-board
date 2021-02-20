@@ -6,3 +6,5 @@ if no title ste message bold etc...
 // RElative date time
 
 // Limit reminder for text input
+
+Check Y! Mail for Notice Board items

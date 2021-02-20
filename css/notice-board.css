@@ -86,7 +86,7 @@ header a#add-notice i {
     margin: 6px 0 2px 0;
 }
 
-/* Social */
+/*----- Social */
 #notices .notice .social {
     margin: 9px 0 0 0;
     color: #666;
@@ -144,12 +144,12 @@ header a#add-notice i {
     margin: 0;
 }
 
-/* Notice Modal */
+/*----- Notice Modal */
 #notice-modal {
    
 }
 
-/* Add Notice Modal */
+/*----- Add Notice Modal */
 #add-notice-modal {
     
 }
@@ -211,6 +211,7 @@ header a#add-notice i {
 /*--------------------------------------------------
     Form Elements
 --------------------------------------------------*/
+/*----- Buttons */
 .btn {
     margin: 0;
     padding: 4px 11px;
@@ -256,7 +257,7 @@ input[type="text"], textarea {
     border-radius: 3px !important;
 }
 
-/* Add Notice Form */
+/*----- Add Notice Form */
 #add-notice-form {
     padding: 0 0 5px 0;
 }
