@@ -1,8 +1,3 @@
-<!-- <template id="notice-modal-content-template">
-    <div class="author">Posted by: ${notice.author}</div>
-    <div class="content">${notice.content}</div>
-</template> -->
-
 <template id="notice-template">
     <div class="col-md-6 col-lg-4">
         <div class="notice" data-id="{{id}}" data-like-ratio="{{difference likes dislikes}}" data-sticky="{{sticky}}">
@@ -42,6 +37,7 @@
 </template>
 
 <template id="add-notice-form-template">
+    
     <form id="add-notice-form" action="" method="POST" novalidate>
 
         <div class="form-group">
@@ -65,4 +61,5 @@
         </div>
 
     </form>
+    
 </template>
