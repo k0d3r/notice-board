@@ -3,8 +3,11 @@ Consider the confirm/cancel dialog box in handlebars
 if no title ste message bold etc...
 
 
-// RElative date time
-
 // Limit reminder for text input
 
 Check Y! Mail for Notice Board items
+
+Cannot call 2 chained functions in Handlebars templates
+EG: {{ uppercase (bold 'Jack') }}
+
+Equal heigh cols for notices

@@ -69,21 +69,24 @@ header a#add-notice i {
     font-weight: 500;
 }
 #notices .notice .content {
-    height: 80px; /* ToDo: Remove these 2 rules, and look for Bootstrap4 way of doing it or dynamic with JS */
+    height: 80px; /* ToDo: Remove these 2 rules, and look for Bootstrap4 way of doing it OR dynamic with JS */
     overflow: hidden;
 }
 #notices .notice .content p:last-child {
     margin: 0;
 }
 #notices .notice .author, #notices .notice .date {
-    font-size: 0.85em;
+    font-size: 0.9em;
     color: #495057;
+}
+#notices .notice .date {
+    margin: 0 0 5px 0;
 }
 #notices .notice .date::first-letter {
     text-transform: uppercase;
 }
 #notices .notice .author {
-    margin: 6px 0 2px 0;
+    margin: 3px 0 2px 0;
 }
 
 /*----- Social */

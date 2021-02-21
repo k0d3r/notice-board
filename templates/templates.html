@@ -9,10 +9,7 @@
             <div class="title">{{stripHtmlTags title}}</div>
             <div class="content">{{truncateString content 120}}</div>
             <div class="author">{{author}}</div>
-            <div class="date">{{date}} | {{formatDate date 'MMM Do YYYY, hh:mm A'}}</div>
-            <div class="date">{{formatDate date 'fromNow'}}</div>
-            <div>{{ uppercase (bold 'Jack') }}</div>
-            <div>{{bold 'James'}}</div>
+            <div class="date">{{formatDate date 'fromNow'}} | {{formatDate date 'MMM Do YYYY, hh:mm A'}}</div> <!-- Choose what way you would like to display the date -->
             <div class="row">
                 <div class="col-sm-8">
                     <div class="social">
