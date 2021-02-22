@@ -243,6 +243,34 @@ header a#add-notice i {
     border-color: #394171;
 }
 
+/*----- Custom Checkbox */
+input[type="checkbox"] {
+    width: 16px !important;
+    height: 16px !important;
+    margin: 1px 0 0 3px;
+    padding: 2px 0 0 0;
+    box-sizing: border-box;
+    vertical-align: top;
+    -webkit-appearance: none; -moz-appearance: none; -o-appearance: none; appearance: none;
+    box-shadow: none;
+    font-size: 14px;
+    text-align: center;
+    line-height: 1em;
+    outline: none;
+    border: 1px solid #d2d6db;
+    border-radius: 2px;
+    cursor: pointer;
+    background: none;   
+}
+input[type="checkbox"]:checked {
+    border: none;
+    background: var(--primary-color);
+}
+input[type="checkbox"]:checked:after {
+    content: '\2713'; /* Check mark HTML Symbol */
+    color: #fff;
+}
+
 .form-control {
     font-size: inherit;
     border: 1px solid #d2d6db;
