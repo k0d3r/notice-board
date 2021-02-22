@@ -1,3 +1,6 @@
+### Live URL
+https://k0d3r.github.io/notice-board/
+
 ### External Dependencies
 Updated Oct 2020 to their most recent releases  
 [Bootstrap](https://getbootstrap.com/)  
