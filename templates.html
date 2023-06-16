@@ -1,0 +1,135 @@
+<!--
+    The #notice-template template is used for rendering each notice with the JavaScript Handlebars templating engine.
+    The notices could also be rendered on the page using server-side code instead of JavaScript.
+-->
+<template id="notice-template">
+    <div class="col-md-6 col-lg-4">
+        <div class="notice" data-id="{{id}}" data-like-ratio="{{difference likes dislikes}}" data-pinned="{{pinned}}">
+            <div class="title">{{stripHtmlTags title}}</div>
+            <div class="content">{{truncateString content 120}}</div>
+            <div class="author">{{author}}</div>
+            <div class="date">{{formatDate date 'fromNow'}} | {{formatDate date 'MMM Do YYYY, hh:mm A'}}</div> <!-- Choose what way you would like to display the date -->
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="social">
+                        <span class="comments-count"><i class="far fa-comment"></i>{{count comments}}</span>
+                        <span class="likes">
+                            <a href="#" data-action="like"><i class="far fa-thumbs-up"></i></a> {{likes}}
+                            <a href="#" data-action="dislike"><i class="far fa-thumbs-down"></i></a> {{dislikes}}
+                        </span>
+                    </div> <!-- /.social -->
+                </div>
+                <div class="col-sm-4 d-flex flex-row-reverse">
+                    <a class="view btn btn-default" href="#" role="button">View</a>
+                </div>
+                {{#if pinned}}
+                    <i class="notice-type fa-solid fa-thumbtack"></i>
+                {{/if}}
+            </div> <!-- /.row -->
+        </div> <!-- /.notice -->
+    </div>
+</template>
+
+<template id="notice-modal-template">
+    <div class="author">Posted by: {{author}}</div>
+    <div class="content">{{{content}}}</div>
+    {{#if images}}
+        <div class="images">
+            {{#each images}}
+                <div class="image">
+                    <span class="title">{{title}}</span>
+                    <img src="{{src}}" alt="{{title}}">
+                </div>
+            {{/each}}
+        </div>
+    {{/if}}
+    {{#if comments}}
+        <div class="comments">
+            <h4>Comments</h4>
+            {{#each comments}}
+                <div class="comment">
+                    <header>{{author}} - {{formatDate date 'fromNow'}}</header>
+                    {{comment}}
+                </div>
+            {{/each}}
+        </div>
+    {{/if}}
+    <div class="row">
+        <div class="col-md-3">
+            <a id="show-comment-form" class="btn btn-outline" href="#" role="button"><i class="fas fa-plus-circle"></i>Add Comment</a>
+        </div>
+    </div>
+    <form id="add-comment-form" action="" method="POST" novalidate>
+
+        <div class="form-group">
+            <textarea name="comment" id="comment" class="form-control" rows="6" placeholder="Comment"></textarea>
+        </div>
+
+        <input type="hidden" notice-id="{{id}}">
+
+        <div class="text-right">
+            <button type="button" class="btn btn-cancel">Cancel</button>
+            <button type="submit" class="btn btn-default">Add</button>
+        </div>
+
+    </form>
+</template>
+
+<template id="confirm-cancel-dialog-template">
+    <div class="confirm-cancel-dialog">
+        <div class="content text-center">
+            <h3 class="title d-none"></h3>
+            <p class="message">Are you sure you want to cancel?</p>
+            <div class="text-right">
+                <button type="button" class="btn btn-cancel">No</button>
+                <button type="button" class="btn btn-default close-modals">Yes</button>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template id="add-notice-form-template">
+    
+    <form id="add-notice-form" action="" method="POST" novalidate>
+
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title" class="form-control" placeholder="Notice title">
+        </div>
+
+        <div class="form-group">
+            <label for="content">Content</label>
+            <textarea name="content" id="content" class="form-control" rows="6" placeholder="Notice content"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="pinned">Pinned</label>
+            <input type="checkbox" name="pinned" id="pinned">
+        </div>
+
+        <div class="form-group">
+            <label for="image">Image Upload</label>
+            <input type="file" name="image" id="image" class="form-control-file" multiple>
+        </div>
+
+        <div class="text-right">
+            <button type="button" class="btn btn-cancel">Cancel</button>
+            <button type="submit" class="btn btn-default">Add</button>
+        </div>
+
+    </form>
+    
+</template>
+
+<template id="ad-template">
+    <div class="col-md-4 col-lg-12">
+        <div class="ad" data-id="{{id}}" data-href="{{href}}">
+            <div class="title">{{stripHtmlTags title}}</div>
+            <div class="content">{{stripHtmlTags content}}</div>
+            {{#if image}}
+                <div class="image"><img src="{{image.src}}" alt="{{image.title}}"></div>
+            {{/if}}
+            <span class="ad-label">Ad</span>
+        </div> <!-- /.ad -->
+    </div>
+</template>
